@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes\fish as SoftDeletesFish;
 use Illuminate\Support\Facades\DB;
 
 class fishController extends Controller
+
 {
     //สร้างหน้าแรกปลา
     public function index(){
