@@ -66,7 +66,7 @@ class fishController extends Controller
    
         
     }
-    //เข้าไปหน้าอัพเดต
+    //เข้าไปหน้าแก้ไข
    
     public function edit($fish_id){
         $fish = fish::find($fish_id);
