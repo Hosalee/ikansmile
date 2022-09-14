@@ -20,7 +20,8 @@ Route::post('/fish/addfish',[fishController::class,'store'])->name('adminAddfish
 //แอตมิน//พนักงาน
 Route::get('/employee',[EmployeeController::class,'index'])->name('employee');
 Route::get('/employee/addEmployee',[EmployeeController::class,'create'])->name('addEmployee');
-Route::post('/fish/addEmployee',[EmployeeController::class,'store'])->name('addStore');
+Route::post('/employee/addEmployee',[EmployeeController::class,'store'])->name('addStore');
+Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

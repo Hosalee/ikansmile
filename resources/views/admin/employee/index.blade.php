@@ -55,7 +55,7 @@
        
 
 
-                   <a href="{{--url('/fish/editfish/'.$row->fish_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
+                   <a href="{{route('editEmployee',$row->emp_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
                     <a href="{{--route('Deletefish',$row->fish_id)--}}" 
                         
                         class="btn btn-danger bi bi-trash-fill"

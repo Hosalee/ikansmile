@@ -8,14 +8,14 @@
         <div class="navbar-nav ml-auto">
             <div class="navbar-form-wrapper ">
                 <form class="navbar-form form-inline  ">
-                    <div class="input-group search-box ">								
+                    {{-- <div class="input-group search-box ">								
                         <input type="text" id="search" class="form-control  py-1 " placeholder="Search Here...">
                         <div class="input-group-append ">
                             <span class="input-group-text py-1">
                                 <i class="material-icons">&#xE8B6;</i>
                             </span>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
            

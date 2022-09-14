@@ -120,9 +120,13 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(employee $employee)
+    public function edit( $employee)
     {
         //
+        $emp =employee::find($employee);
+        return view('admin.employee.editEmployee',compact('emp'));
+     
+       
     }
 
     /**
