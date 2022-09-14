@@ -123,7 +123,7 @@ class EmployeeController extends Controller
     public function edit( $employee)
     {
         //
-        $emp =employee::find($employee);
+        $emp = employee::find($employee);
         return view('admin.employee.editEmployee',compact('emp'));
      
        
@@ -136,9 +136,76 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, employee $employee)
+
+    public function update(Request $request,$emp_id)
     {
         //
+        $request->validate([
+            // 'emp_fristname'=>'required:',
+            // 'emp_lastname'=>'required',
+            // 'sex'=>'required',
+            // 'Address'=>'required',
+            // 'email'=>'required',
+            // 'tell'=>'required',
+            // 'useranme'=>'required',
+            // 'password'=>'required',
+            // 'salary'=>'required',
+        ]
+        );
+        $image = $request->file('profile');
+        //อัพเดตภาพและชื่อ
+        if( $image){
+
+            //Generate ชื่อภาพ
+            $name_gen=hexdec(uniqid());
+             // ดึงนามสกุลไฟล์ภาพ
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $img_name = $name_gen.'.'.$img_ext;
+        
+        
+            //อัพโหลดและอัพเดตข้อมูล
+            $upload_location = 'image/profile/';
+            $full_path = $upload_location.$img_name;
+
+            
+            //อัพเดตข้อมูล
+            employee::find($emp_id)->update([
+
+                 'profile'=> $full_path, 
+                 'emp_fristname'=> $request->emp_fristname, 
+                 'emp_lastname'=> $request->emp_lastname, 
+                 'sex'=> $request->sex, 
+                 'Address'=> $request->Address, 
+                 'Email'=> $request->email, 
+                 'tell'=> $request->tell, 
+                 'Useranme'=> $request->useranme, 
+                 'Password'=> $request->password, 
+                 'salary'=> $request->salary    
+            ]);
+
+            //ลบภาพเก่าและอัพภาพใหม่แทนที่
+            $old_image = $request->old_image;
+            unlink($old_image);
+            $image->move($upload_location,$img_name);
+
+            return redirect()->route('employee')->with('success',"อัพเดตข้อมูลพนักงานเรียบร้อย");
+
+        }else{
+            //อัพเดตข้อมูลอย่างเดียว
+            employee::find($emp_id)->update([
+                'emp_fristname'=> $request->emp_fristname, 
+                'emp_lastname'=> $request->emp_lastname, 
+                'sex'=> $request->sex, 
+                'Address'=> $request->Address, 
+                'Email'=> $request->email, 
+                'tell'=> $request->tell, 
+                'Useranme'=> $request->useranme, 
+                'Password'=> $request->password, 
+                'salary'=> $request->salary 
+            ]);
+            return redirect()->route('employee')->with('success',"อัพเดตข้อมูลพนักงานเรียบร้อย");
+        }
+
     }
 
     /**
@@ -147,8 +214,16 @@ class EmployeeController extends Controller
      * @param  \App\Models\employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(employee $employee)
+    public function destroy($emp_id)
     {
         //
+        $img = employee::find($emp_id)->profile;
+        unlink($img);
+        
+  
+
+        //ลบข้อมูลจากฐานข้อมูล
+        $delete=employee::find($emp_id)->delete();
+         return redirect()->back()->with('success',"ลบข้อมูลพนักงานเรียบร้อย");
     }
 }

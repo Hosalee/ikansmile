@@ -9,8 +9,9 @@
             <div class="collapse navbar-collapse ">
                 
                 <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                    <li class="nav-item  ">
+                    <li class="nav-item  mt-1  ">
                         <a class="nav-link pl-0 text-nowrap bi bi-house-door-fill " href="{{route('dashboard')}}"><span class="font-weight-bold">Dashboard</span></a>
+                        <hr class="bg-light">
                     </li>
                     <li class="nav-item mt-1 ">
                         <a class="nav-link pl-0" href="{{route('fish')}}"> <i class="bi bi-cart-fill"></i> <span class="d-none d-md-inline">ข้อมูลปลา</span></a>
@@ -32,10 +33,22 @@
                         <ul class="dropdown-menu dropdown-menu-dark">
                           <li><a class="dropdown-item bg-light text-dark bi bi-person " href="{{route('employee')}}">ข้อมูลพนักงาน</a></li>
                           <li><a class="dropdown-item bg-light text-dark bi bi-person" href="2">ข้อมูลค่าจ้างพนักงาน</a></li>
-                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="3">ข้อมูลซัพพลายเออร์</a></li>
-                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="4">ข้อมูลลูกค้า</a></li>
+                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="{{route('supplier')}}">ข้อมูลซัพพลายเออร์</a></li>
+                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="{{route('customer')}}">ข้อมูลลูกค้า</a> </li>
                         </ul>
                       </li>
+                      <ul class="navbar-nav mt-1">
+                        <li class="nav-item dropdown ">
+                          <a class="nav-link dropdown-toggle  pl-0 bi bi-cart-fill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          ข้อมูลอาหารปลา
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-dark ">
+                            <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลสูตรอาหาร</a></li>
+                            <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลวัตถุดิบ</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                      
                      
                         <ul class="navbar-nav mt-1">
                           <li class="nav-item dropdown ">

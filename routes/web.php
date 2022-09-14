@@ -1,9 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CageController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\fishController;
+use App\Http\Controllers\SupplierController;
+use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
 //แอตมิน//แดชบอร์ท
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
@@ -22,6 +25,25 @@ Route::get('/employee',[EmployeeController::class,'index'])->name('employee');
 Route::get('/employee/addEmployee',[EmployeeController::class,'create'])->name('addEmployee');
 Route::post('/employee/addEmployee',[EmployeeController::class,'store'])->name('addStore');
 Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
+Route::post('/employee/updateEmployee/{id}',[EmployeeController::class,'update']);
+Route::get('/employee/DeleteEmployee/{id}',[EmployeeController::class,'destroy'])->name('DeleteEmployee');
+//แอตมิน//:ซัพพลาย
+Route::get('/supplier',[SupplierController::class,'index'])->name('supplier');
+Route::get('/supplier/addSupplier',[SupplierController::class,'create'])->name('addSupplier');
+Route::post('/supplier/storeSupplier',[SupplierController::class,'store'])->name('storeSupplier');
+Route::get('/supplier/editSupplier/{id}',[SupplierController::class,'edit'])->name('editSupplier');
+Route::post('/supplier/updateSupplier/{id}',[SupplierController::class,'update'])->name('updateSupplier');
+Route::get('/supplier/deleteSupplier/{id}',[SupplierController::class,'destroy'])->name('deleteSupplier');
+//แอตมิน//:ลูกค้า
+Route::get('/customer',[CustomerController::class,'index'])->name('customer');
+Route::get('/customer/addCustomer',[CustomerController::class,'create'])->name('addCustomer');
+Route::post('/customer/storeCustomer',[CustomerController::class,'store'])->name('storeCustomer');
+Route::get('/customer/editCustomer/{id}',[CustomerController::class,'edit'])->name('editCustomer');
+Route::post('/customer/updateCustomer/{id}',[CustomerController::class,'update'])->name('updateCustomer');
+Route::get('/customer/deleteCustomer/{id}',[CustomerController::class,'destroy'])->name('deleteCustomer');
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +54,58 @@ Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->na
 | contains the "web" middleware group. Now create something great!
 |
 */
+//พนักงาน//:ลูกค้า
+
+//แอตมิน//แดชบอร์ท
+//Route::get('/homeCustomer',[dashboardController::class,'index'])->name('homeCustomer');
+//แอตมิน//ปลา
+Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
+//แอตมิน//กระชัง
+//Route::get('/employee/cage',[CageController::class,'index'])->name('cage');
+//แอตมิน//พนักงาน
+//Route::get('/employee/employee',[EmployeeController::class,'index'])->name('employee');
+//Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
+//Route::post('/employee/updateEmployee/{id}',[EmployeeController::class,'update']);
+//แอตมิน//:ซัพพลาย
+//Route::get('/employee/supplier',[SupplierController::class,'index'])->name('supplier');
+
+//แอตมิน//:ลูกค้า
+//Route::get('/employee/customer',[CustomerController::class,'index'])->name('customer');
+// Route::get('/customer/addCustomer',[CustomerController::class,'create'])->name('addCustomer');
+// Route::post('/customer/storeCustomer',[CustomerController::class,'store'])->name('storeCustomer');
+// Route::get('/customer/editCustomer/{id}',[CustomerController::class,'edit'])->name('editCustomer');
+// Route::post('/customer/updateCustomer/{id}',[CustomerController::class,'update'])->name('updateCustomer');
+// Route::get('/customer/deleteCustomer/{id}',[CustomerController::class,'destroy'])->name('deleteCustomer');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
 
 Route::get('/', function () {
     return view('login');

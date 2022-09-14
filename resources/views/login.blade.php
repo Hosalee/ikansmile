@@ -1,10 +1,7 @@
-@extends('layouts.master')
-
+ @extends('layouts.master')
 @section('content')
 
-
-
-<main class="col bg-faded py-3 flex-grow-1 bg-info">
+ <main class="col bg-faded py-3 flex-grow-1 bg-info">
     <h3 class="text-center text-white pt-5  mt-5"></h3>
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center  " >
@@ -36,5 +33,6 @@
     </div>
    
 
-</main>
-@endsection
+</main> 
+@endsection  
+

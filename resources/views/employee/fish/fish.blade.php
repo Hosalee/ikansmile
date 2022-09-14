@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @include('navbar.header')
 @section('content')
-@include('sidebar.sidebar')
+
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
@@ -55,7 +55,7 @@
               </tr>
           @endforeach
       </table>
-     {{-- {!! $companies->links('pagination::bootstrap-5') !!}  --}}
+     {!! $Fish->links('pagination::bootstrap-5') !!}  
 
 
     </div>

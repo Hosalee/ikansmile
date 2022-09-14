@@ -8,12 +8,14 @@
 <main class="col bg-faded py-3 flex-grow-1">
   <div class="container mt-2">
     <div class="row">
-        <div class="col-lg-12   text-center ">
-            <h2 >ข้อมูลปลา</h2>
+
+        <div class="col-lg-12  text-center my-3 ">
+            <h2 >ข้อมูลซัพพลายเออร์</h2>
+          
         </div>
       
-        <div class="pl-0">
-        <a href="{{route('addfish')}}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลปลา</a>
+        <div class="pl-0 mt-3 ">
+        <a href="{{route('addSupplier')}}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลซัพพลายเออร์</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -25,35 +27,30 @@
         <table class="table table-bordered  mt-3 text-center">
           <tr class="bg-dark text-white  ">
               <th>#</th>
-              <th>รูปปลา</th>
-              <th>ชื่อปลา</th>
-              <th>พันธ์ุปลา</th>
-              <th>ลักษณะปลา</th>
+              <th>รูป</th>
+              <th>ชื่อ</th>
+              <th width="250 px">ที่อยู่</th>
+              <th>Email</th>
+              <th>เบอร์โทร</th>
               <th width="150 px">Action</th>
           </tr>
-         @foreach($Fish as $row)
+          @foreach($Sp as $row)
               <tr>
-                 <td>{{$Fish->firstItem()+$loop->index }}</td>
+                 <td>{{$Sp->firstItem()+$loop->index }}</td>
                   <td><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
                   <td>{{ $row->name }}</td>
-                  <td>{{  $row->species }}</td>
-                  <td class="text-wrap text-left" style="width: 18rem;" > 
-                    {{ Str::limit( $row->fish_appearance,150)}}
-                 </td>
+                  <td>{{  $row->Address }}</td>
+                  <td>{{  $row->Email }}</td>
+                  <td>{{  $row->tell }}</td>
                   <td>
-                 
-
-
-                   <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    <a href="{{route('Deletefish',$row->fish_id)}}" 
-                        
-                        class="btn btn-danger bi bi-trash-fill"
+                   <a href="{{url('/supplier/editSupplier/'.$row->supplier_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
+                    <a href="{{route('deleteSupplier',$row->supplier_id)}}" 
+                          class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 
-                   
                   </td>
               </tr>
-          @endforeach
+          @endforeach 
       </table>
      {{-- {!! $companies->links('pagination::bootstrap-5') !!}  --}}
 

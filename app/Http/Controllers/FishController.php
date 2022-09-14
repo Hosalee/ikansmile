@@ -23,6 +23,12 @@ class fishController extends Controller
         return view('admin.fish.addfish');
     }
         
+    public function show()
+    {
+        //
+        $Fish = fish::paginate(5);
+        return view('employee.fish.fish',compact('Fish'));
+    }
     
     public function store( Request $request ){
         //ตรวจสอบข้อมูล
@@ -78,6 +84,8 @@ class fishController extends Controller
         //ตรวจสอบข้อมูล
         $request->validate([
             'name'=>'required:fish',
+            'species'=>'required:fish',
+            'fish_appearance'=>'required:fish',
            
            
            

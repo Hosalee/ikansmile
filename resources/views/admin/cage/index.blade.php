@@ -24,12 +24,13 @@
 
         <table class="table table-bordered  mt-3 text-center">
           <tr class="bg-dark text-white  ">
-              <th>ID</th>
+              <th>#</th>
               <th>ชื่อ</th>
               <th>เจ้าของ</th>
               <th>ที่อยู่</th>
               <th>ขนาดและความจุ</th>
               <th>ละติจุด,ลองจิจุด</th>
+              <th>สถานะ</th>
               <th width="auto px">Action</th>
           </tr>
        {{--  @foreach($Fish as $row)
