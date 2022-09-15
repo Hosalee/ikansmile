@@ -24,14 +24,15 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="form-group my-3">
-                            <label for="picture">รูปปลา</label>
-                            <br>
+                           
                             <input type="hidden" name="old_image" value="{{$fish->picture}}">
-                            <div class="form-group ">
-                                <img src="{{asset($fish->picture)}}" alt="" width="200px" height="200px">
+                            <div class="form-group align-items-center text-center ">
+                                <img src="{{asset($fish->picture)}}" alt="" width="200px" height="200px" class="border rounded">
                             </div>
     
                             <br>
+                            <label for="picture">รูปปลา</label>
+                          
                             <input type="file" class="form-control" name="picture" value="{{$fish->picture}}">
                             @error('picture')
                             <div class="alert alert-danger mt-1">{{ $message }}</div>

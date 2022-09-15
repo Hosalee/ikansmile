@@ -44,7 +44,7 @@
                           </a>
                           <ul class="dropdown-menu dropdown-menu-dark ">
                             <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลสูตรอาหาร</a></li>
-                            <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลวัตถุดิบ</a></li>
+                            <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="{{route('rawMaterial')}}">ข้อมูลวัตถุดิบ</a></li>
                           </ul>
                         </li>
                       </ul>
@@ -62,9 +62,18 @@
                           </li>
                         </ul>
                        
-                        <li class="nav-item mt-1">
-                            <a class="nav-link pl-0 bi bi-tsunami " href=""> <span class="d-none d-md-inline"> ข้อมูลการเลี้ยง</span></a>
-                        </li> 
+                  
+                        <ul class="navbar-nav mt-1">
+                          <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle  pl-0  bi bi-tsunami" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ข้อมูลการเลี้ยง
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark ">
+                              <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลการเลี้ยงปลา</a></li>
+                              <li><a class="dropdown-item bg-light text-dark bi bi-cart-fill" href="#">ข้อมูลการจับปลา</a></li>
+                            </ul>
+                          </li>
+                        </ul>
                         
                         <ul class="navbar-nav mt-1 ">
                             <li class="nav-item dropdown ">

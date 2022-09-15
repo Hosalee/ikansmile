@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\fishController;
+use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\SupplierController;
 use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
@@ -41,6 +42,14 @@ Route::post('/customer/storeCustomer',[CustomerController::class,'store'])->name
 Route::get('/customer/editCustomer/{id}',[CustomerController::class,'edit'])->name('editCustomer');
 Route::post('/customer/updateCustomer/{id}',[CustomerController::class,'update'])->name('updateCustomer');
 Route::get('/customer/deleteCustomer/{id}',[CustomerController::class,'destroy'])->name('deleteCustomer');
+//แอตมิน//:วัตถุดิบ
+Route::get('/rawMaterial',[RawMaterialController::class,'index'])->name('rawMaterial');
+Route::get('/rawMaterial/addRawMaterial',[RawMaterialController::class,'create'])->name('addRawMaterial');
+Route::post('/rawMaterial/storeRawMaterial',[RawMaterialController::class,'store'])->name('storeRawMaterial');
+Route::get('/rawMaterial/editRawMaterial/{id}',[RawMaterialController::class,'edit'])->name('editRawMaterial');
+Route::post('/rawMaterial/updateRawMaterial/{id}',[RawMaterialController::class,'update'])->name('updateRawMaterial');
+Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'destroy'])->name('deleteRawMaterial');
+
 
 
 
