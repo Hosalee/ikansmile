@@ -83,9 +83,9 @@ class fishController extends Controller
     public function update(Request $request , $fish_id){
         //ตรวจสอบข้อมูล
         $request->validate([
-            'name'=>'required:fish',
-            'species'=>'required:fish',
-            'fish_appearance'=>'required:fish',
+            // 'name'=>'required:fish',
+            // 'species'=>'required:fish',
+            // 'fish_appearance'=>'required:fish',
            
            
            

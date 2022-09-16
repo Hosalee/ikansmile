@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\fishController;
 use App\Http\Controllers\RawMaterialController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SupplierController;
 use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
@@ -21,6 +22,8 @@ Route::post('/fish/addfish',[fishController::class,'store'])->name('adminAddfish
 //แอตมิน//กระชัง
  Route::get('/cage',[CageController::class,'index'])->name('cage');
  Route::get('/cage/addCage',[CageController::class,'create'])->name('addCage');
+ Route::post('/cage/storeCage',[CageController::class,'store'])->name('storeCage');
+
 //แอตมิน//พนักงาน
 Route::get('/employee',[EmployeeController::class,'index'])->name('employee');
 Route::get('/employee/addEmployee',[EmployeeController::class,'create'])->name('addEmployee');
@@ -28,6 +31,8 @@ Route::post('/employee/addEmployee',[EmployeeController::class,'store'])->name('
 Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
 Route::post('/employee/updateEmployee/{id}',[EmployeeController::class,'update']);
 Route::get('/employee/DeleteEmployee/{id}',[EmployeeController::class,'destroy'])->name('DeleteEmployee');
+//แอตมิน//พนักงาน
+Route::get('/salary',[SalaryController::class,'index'])->name('salary');
 //แอตมิน//:ซัพพลาย
 Route::get('/supplier',[SupplierController::class,'index'])->name('supplier');
 Route::get('/supplier/addSupplier',[SupplierController::class,'create'])->name('addSupplier');

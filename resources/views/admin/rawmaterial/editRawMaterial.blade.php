@@ -15,6 +15,7 @@
           
             <form action="{{url('/rawMaterial/updateRawMaterial/'.$RM->Raw_Material_id)}}" method="POST" enctype="multipart/form-data" class=" p-2 ">
                 @csrf 
+               
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="form-group my-3">
@@ -42,8 +43,8 @@
                     <div class="col-md-12">
                         <div class="form-group my-3 ">
                             <label>ลักษณะปลา</label>
-                            <input type="text" name="details" class="form-control" id="exampleFormControlTextarea1"  value="{{$RM->details}}"> 
-                           {{-- <textarea  type="text" class="form-control" name="details " id="exampleFormControlTextarea1" rows="4"  value="{{$RM->details}}" >{{$RM->details}}</textarea> --}}
+                            {{-- <input type="text" name="details" class="form-control" id="exampleFormControlTextarea1"  value="{{$RM->details}}">  --}}
+                            <textarea  class="form-control" name="details"  style="height: 150px"   >{{$RM->details}}</textarea> 
                            @error('details')
                            <div class="alert alert-danger mt-1 ">{{ $message }}</div>
                        @enderror

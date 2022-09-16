@@ -32,7 +32,7 @@
                         
                         <ul class="dropdown-menu dropdown-menu-dark">
                           <li><a class="dropdown-item bg-light text-dark bi bi-person " href="{{route('employee')}}">ข้อมูลพนักงาน</a></li>
-                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="2">ข้อมูลค่าจ้างพนักงาน</a></li>
+                          <li><a class="dropdown-item bg-light text-dark bi bi-person" href="{{route('salary')}}">ข้อมูลค่าจ้างพนักงาน</a></li>
                           <li><a class="dropdown-item bg-light text-dark bi bi-person" href="{{route('supplier')}}">ข้อมูลซัพพลายเออร์</a></li>
                           <li><a class="dropdown-item bg-light text-dark bi bi-person" href="{{route('customer')}}">ข้อมูลลูกค้า</a> </li>
                         </ul>

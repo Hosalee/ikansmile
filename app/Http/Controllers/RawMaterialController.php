@@ -116,7 +116,7 @@ class RawMaterialController extends Controller
         //
         $request->validate([
             'Raw_Material_name'=>'required:RawMaterial',
-            'details'=>'required:RawMaterial',
+            //'details'=>'required:RawMaterial',
            
            
            

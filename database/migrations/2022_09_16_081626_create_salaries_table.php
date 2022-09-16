@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cages', function (Blueprint $table) {
-            $table->id('cage_id');
-            $table->string('cage_name');
-            $table->string('cage_owner');
-            $table->string('Address');
-            $table->string('size');
-            $table->string('capicity');
-            $table->text('latitude');
-            $table->text('longitude');
+        Schema::create('salaries', function (Blueprint $table) {
+            $table->id('salary_id');
+            $table->date('date');
+            $table->integer('amount');
             $table->string('status');
-            $table->timestamps();
+
+        });
+        Schema::create('salaries', function (Blueprint $table) { 
+            $table->foreignId('emp_id')->constrained();
         });
     }
 
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cages');
+        Schema::dropIfExists('salaries');
     }
 };

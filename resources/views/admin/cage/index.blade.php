@@ -33,22 +33,27 @@
               <th>สถานะ</th>
               <th width="auto px">Action</th>
           </tr>
-       {{--  @foreach($Fish as $row)
+         @foreach($Cage as $row)
               <tr>
-                  <td>{{ $row->fish_id }}</td>
-                  <td><img src="{{asset($row->picture)}}" alt="" width="100px" height="100px"></td>
-                  <td>{{ $row->name }}</td>
-                  <td>{{  $row->species }}</td>
-                  <td class="text-wrap text-left" style="width: 18rem;" > 
-                    {{ Str::limit( $row->fish_appearance,150)}}
-                 </td>
-                  <td>
+                  <td>{{$Cage->firstItem()+$loop->index }}</td>
+                  <td>{{ $row->cage_name }}</td>
+                  <td>{{  $row->cage_owner }}</td>
+                   <td>{{  $row->Address }}</td>
+                    <td>{{  $row->size }} , {{  $row->capicity }}</td> 
+                    <td>{{  $row->latitude }} , {{  $row->longitude }}</td>
+                    @if ($row->status=='ว่าง')
+                    <div class=""></div>
+                      <td class=""> <div class="text-white btn btn-danger pl-4 pr-4 pt-2" >{{  $row->status }}</div></td>
+                    @endif
+                    @if ($row->status!='ว่าง')
+                    <td class=""> <div class="text-white btn btn-success " >{{$row->status}}</div></td>
+                    @endif
+                    
+
                  
-
-
-                   <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    <a href="{{route('Deletefish',$row->fish_id)}}" 
-                        
+                  <td>
+                   <a href="{{--url('/fish/editfish/'.$row->fish_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
+                    <a href="{{--route('Deletefish',$row->fish_id)--}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 

@@ -66,10 +66,9 @@
                     <div class="col-md-12">
                         <div class="form-group my-3">
                             <strong>ลักษณะปลา</strong>
-                            <input type="text" name="fish_appearance" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{$fish->fish_appearance}}">
-                           {{-- <textarea class="form-control text-left" name="fish_appearance " id="exampleFormControlTextarea1" rows="3" value="{{$fish->fish_appearance}}" >
-                             {{$fish->fish_appearance}}
-                            </textarea>--}}
+                            {{-- <input type="text" name="fish_appearance" class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{$fish->fish_appearance}}"> --}}
+                           {{-- <textarea class="form-control " name="fish_appearance "  style="height: 150px"  > {{$fish->fish_appearance}}</textarea> --}}
+                           <textarea  class="form-control" name="fish_appearance"  style="height: 150px"   >{{$fish->fish_appearance}}</textarea> 
                             
                             @error('fish_appearance')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>

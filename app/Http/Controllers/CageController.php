@@ -39,6 +39,43 @@ class CageController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'cage_name'=>'required:cage',
+            'cage_owner'=>'required:cage',
+            'size'=>'required:cage',
+            'Address'=>'required:cage',
+            'capicity'=>'required:cage',
+            'latitude'=>'required:cage',
+            'longitude'=>'required:cage',
+        ],
+        [
+            'cage_name.required'=>"กรุณาระบุชื่อกระชัง",
+            'cage_owner.required'=>"กรุณาระบุชื่อเจ้าของ",
+            'size.required'=>"กรุณาระบุขนาด",
+            'Address.required'=>"กรุณาระบุที่อยู่",
+            'capacity.required'=>"กรุณาระบุความจุ",
+            'latitude.required'=>"กรุณาระบุละติจุด",
+            'longitude.required'=>"กรุณาระบุลองจิจุด"
+            
+
+            
+        ]);
+      
+
+      //เพิ่มข้อมูลเข้าปลา database
+        cage::insert([
+       'cage_name' => $request->cage_name,    
+       'cage_owner' => $request->cage_owner,
+        'size'=> $request->size,
+        'Address'=> $request->Address,
+        'capicity'=> $request->capicity,
+        'latitude'=> $request->latitude,
+        'longitude'=> $request->longitude,
+        'status'=> "มีการเลี้ยง",
+
+    ]);
+    
+    return redirect()->route('cage')->with('success',"บันทึกข้อมูลกระชังเรียบร้อย");
     }
 
     /**

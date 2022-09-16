@@ -13,19 +13,15 @@
                 <h2>เพิ่มข้อมูลกระชัง</h2>
             </div>
            
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
            
-            <form action="{{-- route('adminAddfish') --}}" method="POST" enctype="multipart/form-data" class=" p-2">
+           
+            <form action="{{ route('storeCage') }}" method="POST" enctype="multipart/form-data" class=" p-2">
                 @csrf
                 <div class="row">
                   
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ชื่อกระชัง</strong>
+                            <label>ชื่อกระชัง</label>
                             <input type="text" name="cage_name" class="form-control mt-1" placeholder=" name">
                             @error('Cage_name')
                                 <div class="alert alert-danger mt-1 ">{{ $message }}</div>
@@ -34,7 +30,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ชื่อเจ้าของกระชัง</strong>
+                            <label>ชื่อเจ้าของกระชัง</label>
                             <input type="text" name="cage_owner" class="form-control mt-1" placeholder=" owner">
                             @error('species')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -44,7 +40,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ที่อยู่กระชัง</strong>
+                            <label>ที่อยู่กระชัง</label>
                             <input type="text" name="Address" class="form-control mt-1" placeholder=" Address">
                             @error('Address')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -54,7 +50,7 @@
 
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ขนาดกระชัง</strong>
+                            <label>ขนาดกระชัง</label>
                             <input type="text" name="size" class="form-control mt-1" placeholder=" size">
                             @error('Address')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -64,16 +60,16 @@
                     
                        <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ความจุของกระชัง(ปลากี่ตัว)</strong>
-                            <input type="text" name="capacity" class="form-control mt-1" placeholder=" capacity">
-                            @error('capacity')
+                            <label>ความจุของกระชัง(ปลากี่ตัว)</label>
+                            <input type="text" name="capicity" class="form-control mt-1" placeholder=" capicity">
+                            @error('capicity')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ละติจุด</strong>
+                            <label>ละติจุด</label>
                             <input type="text" name="latitude" class="form-control mt-1" placeholder=" latitude">
                             @error('latitude')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -82,22 +78,27 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group my-3">
-                            <strong>ลองจิจุด</strong>
+                            <label>ลองจิจุด</label>
                             <input type="text" name="longitude" class="form-control mt-1" placeholder=" longitude">
                             @error('longitude')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="form-group my-3">
                             <strong>สถานะกระชัง</strong>
-                            <input type="text" name="status" class="form-control mt-1" placeholder=" status">
+                             <input type="text" name="status" class="form-control mt-1" placeholder=" status" value="ว่าง"> 
+                            <select class="form-select"  name="status" id="autoSizingSelect" >
+                                <option selected></option>
+                                <option value="ว่าง">ว่าง</option>
+                               
+                              </select>
                             @error('status')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
-                            @enderror
+                            @enlabel
                         </div>
-                    </div>
+                    </div> --}}
                     
                    
                     <div class="col-md-12 form-inline">
