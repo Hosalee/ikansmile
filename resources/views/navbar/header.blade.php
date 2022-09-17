@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light  " style="background-color: #16b7d3">
     <a class="navbar-brand" href="#"><b>Ikan Smile</b></a>  		
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>

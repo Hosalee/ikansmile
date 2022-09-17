@@ -48,7 +48,7 @@ class EmployeeController extends Controller
             'Address'=>'required:employee',
             'email'=>'required:employee',
             'tell'=>'required:employee',
-            'salary'=>'required:employee',
+          
             'username'=>'required:employee',
             'password'=>'required:employee',
 
@@ -61,7 +61,7 @@ class EmployeeController extends Controller
             'Address.required'=>"กรุณาระบุที่อยู่",
             'email.required'=>"กรุณาระบุอีเมล",
             'tell.required'=>"กรุณาระบุเบอร์โทร์",
-            'salary.required'=>"กรุณาระบุรายได้",
+           
             'username.required'=>"กรุณาระบุชื่อผู้ใช้",
             'password.required'=>"กรุณาใส่รหัสผ่าน",
 
@@ -92,7 +92,7 @@ class EmployeeController extends Controller
         'tell'=> $request->tell,
         'Username'=> $request->username,
         'Password'=> $request->password,
-        'salary'=> $request->salary,
+      
 
 
         
@@ -149,7 +149,7 @@ class EmployeeController extends Controller
             // 'tell'=>'required',
             // 'useranme'=>'required',
             // 'password'=>'required',
-            // 'salary'=>'required',
+        
         ]
         );
         $image = $request->file('profile');
@@ -180,7 +180,7 @@ class EmployeeController extends Controller
                  'tell'=> $request->tell, 
                  'Useranme'=> $request->useranme, 
                  'Password'=> $request->password, 
-                 'salary'=> $request->salary    
+                  
             ]);
 
             //ลบภาพเก่าและอัพภาพใหม่แทนที่
@@ -201,7 +201,7 @@ class EmployeeController extends Controller
                 'tell'=> $request->tell, 
                 'Useranme'=> $request->useranme, 
                 'Password'=> $request->password, 
-                'salary'=> $request->salary 
+               
             ]);
             return redirect()->route('employee')->with('success',"อัพเดตข้อมูลพนักงานเรียบร้อย");
         }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\employee;
 use App\Models\salary;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalaryController extends Controller
 {
@@ -15,7 +17,9 @@ class SalaryController extends Controller
     public function index()
     {
         //
-        $Salary = salary::paginate(5);
+        $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
+        ->select('salaries.*','employees.emp_fristname')->paginate(5);
+
         return view('admin.salary.index',compact('Salary'));
     }
 
@@ -27,6 +31,8 @@ class SalaryController extends Controller
     public function create()
     {
         //
+        $emp = employee::all();
+        return view('admin.salary.addSalary',compact('emp'));
     }
 
     /**
@@ -38,6 +44,42 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            
+             'emp_id'=>'required:salary',
+             'date'=>'required:salary',
+             'amount'=>'required:salary',
+             'number'=>'required:salary',
+           
+
+        ],
+        [
+            'emp_id.required'=>"กรุณาระบุพนักงาน",
+                'date.required'=>"วันที่จ่าย",
+            'amount.required'=>"กรุณาระบุค่าจ้างต่อวัน",
+            'number.required'=>"กรุณาจำนวนวันที่ทำงาน"
+        ]);
+        
+        $amount1=$request->amount;
+        $number1=$request->number;
+        $totalAmount = ($amount1*$number1);
+
+        
+           
+
+     // เพิ่มข้อมูลเข้าปลา database
+        salary::insert([
+       'emp_id' => $request->emp_id,    
+       'date' => $request->date,
+        'amount' => $request->amount,
+        'number'=> $request->number,
+        'status'=> 'จ่ายแล้ว',
+        'totalAmount'=> $totalAmount
+    ]);
+    
+    return redirect()->route('salary')->with('success',"บันทึกข้อมูลค่าจ้างพนักงานเรียบร้อย");
+   
+
     }
 
     /**

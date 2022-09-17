@@ -31,8 +31,11 @@ Route::post('/employee/addEmployee',[EmployeeController::class,'store'])->name('
 Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
 Route::post('/employee/updateEmployee/{id}',[EmployeeController::class,'update']);
 Route::get('/employee/DeleteEmployee/{id}',[EmployeeController::class,'destroy'])->name('DeleteEmployee');
-//แอตมิน//พนักงาน
+//แอตมิน//ค่าจ้างพนักงาน
 Route::get('/salary',[SalaryController::class,'index'])->name('salary');
+Route::get('/salary/addSalary',[SalaryController::class,'create'])->name('addSalary');
+Route::post('/salary/storeSalary',[SalaryController::class,'store'])->name('salaryStore');
+Route::get('/salary/showSalary',[SalaryController::class,'show'])->name('showSalary');
 //แอตมิน//:ซัพพลาย
 Route::get('/supplier',[SupplierController::class,'index'])->name('supplier');
 Route::get('/supplier/addSupplier',[SupplierController::class,'create'])->name('addSupplier');

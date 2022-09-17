@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col bg-faded py-3 flex-grow-1">
+<main class="col  py-3 flex-grow-1" style="background-color: #d3d4d5">
   <div class="container mt-2">
     <div class="row">
         <div class="col-lg-12   text-center ">
@@ -23,7 +23,7 @@
         @endif
 
         <table class="table table-bordered  mt-3 text-center">
-          <tr class="bg-dark text-white  ">
+          <tr class="bg-info text-white  ">
               <th>#</th>
               <th>รูปปลา</th>
               <th>ชื่อปลา</th>
@@ -32,7 +32,7 @@
               <th width="150 px">Action</th>
           </tr>
          @foreach($Fish as $row)
-              <tr>
+              <tr style="background-color: #f6fffc">
                  <td>{{$Fish->firstItem()+$loop->index }}</td>
                   <td><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
                   <td>{{ $row->name }}</td>

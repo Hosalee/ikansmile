@@ -13,11 +13,7 @@
                 <h2>แก้ไขข้อมูลปลา</h2>
             </div>
            
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+           
            
             <form action="{{url('/fish/update/'.$fish->fish_id)}}" method="POST" enctype="multipart/form-data" class=" p-2 ">
                 @csrf 

@@ -112,15 +112,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group my-3">
-                        <label>ค่าจ้างรายวัน</label>
-                        <input type="number" name="salary" class="form-control mt-1" value="{{$emp->salary}}">
-                        @error('salary')
-                            <div class="alert alert-danger mt-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
+                
             </div> 
                     <div class="col-md-12 form-inline">
                         <div class="">

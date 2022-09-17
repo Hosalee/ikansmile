@@ -19,7 +19,7 @@ class employee extends Model
         'profile',
         'Username',
         'Password',
-        'salary'
+        
     ];
     protected $primaryKey = 'emp_id';
 }

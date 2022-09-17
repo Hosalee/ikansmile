@@ -14,10 +14,16 @@ class salary extends Model
        'emp_id',
         'date',
         'amount',
-        'status'
-       
+        'status',
+        'number',
+       'totalAmount'
 ];
 protected $primaryKey = 'salary_id';
 protected $foreignKey = 'emp_id';
+
+//  public function employee(){
+
+//     return $this->hasMany(employee::class,'emp_id','emp_id');	
+//  }
 
 }
