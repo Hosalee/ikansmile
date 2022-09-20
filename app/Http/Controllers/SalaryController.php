@@ -18,7 +18,7 @@ class SalaryController extends Controller
     {
         //
         $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
-        ->select('salaries.*','employees.emp_fristname')->paginate(5);
+        ->select('salaries.*','employees.emp_fristname','employees.emp_lastname')->paginate(5);
 
         return view('admin.salary.index',compact('Salary'));
     }
@@ -99,9 +99,16 @@ class SalaryController extends Controller
      * @param  \App\Models\salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function edit(salary $salary)
+    public function edit( $id)
     {
         //
+        // $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
+        // ->select('salaries.*','employees.emp_fristname','employees.emp_lastname');
+
+        // return view('admin.salary.index',compact('Salary'));
+        // $emp = employee::find($id);
+        $Slr = salary::find($id);
+        return view('admin.salary.editSalary',compact('Slr'));
     }
 
     /**

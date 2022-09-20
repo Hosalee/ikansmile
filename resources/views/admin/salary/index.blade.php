@@ -61,7 +61,7 @@
               <tr class="" style="background-color: #e2ebfc">
                    <td>{{$Salary->firstItem()+$loop->index }}</td> 
                   <td>{{  $row->date }}</td>
-                  <td>{{ $row->emp_fristname}} </td>
+                  <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>
                   {{-- <td>{{  $row->date }}</td> --}}
                    <td>{{  $row->amount}}</td>
                     <td>{{  $row->number }}</td>
@@ -77,7 +77,7 @@
        
 
 
-                   <a href="{{--route('editEmployee',$row->emp_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
+                   <a href="{{route('editSalary',$row->salary_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
                     <a href="{{--route('DeleteEmployee',$row->emp_id)--}}" 
                         
                         class="btn btn-danger bi bi-trash-fill"

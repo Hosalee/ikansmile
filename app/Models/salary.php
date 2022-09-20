@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class salary extends Model
 {
     use HasFactory;
@@ -21,9 +22,9 @@ class salary extends Model
 protected $primaryKey = 'salary_id';
 protected $foreignKey = 'emp_id';
 
-//  public function employee(){
+ public function employee1(){
 
-//     return $this->hasMany(employee::class,'emp_id','emp_id');	
-//  }
+    return $this->hasOne(employee::class,'emp_id','emp_id');	
+ }
 
 }
