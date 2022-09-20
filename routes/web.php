@@ -37,6 +37,7 @@ Route::get('/salary/addSalary',[SalaryController::class,'create'])->name('addSal
 Route::post('/salary/storeSalary',[SalaryController::class,'store'])->name('salaryStore');
 Route::get('/salary/editSalary/{id}',[SalaryController::class,'edit'])->name('editSalary');
 Route::post('/salary/updateSalary/{id}',[SalaryController::class,'update']);
+Route::get('/salary/daleteSalary/{id}',[SalaryController::class,'destroy'])->name('DeleteSalary');
 
 //แอตมิน//:ซัพพลาย
 Route::get('/supplier',[SupplierController::class,'index'])->name('supplier');

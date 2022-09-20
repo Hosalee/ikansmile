@@ -22,23 +22,30 @@
                   
                    
                   
-                    <div class="col-md-12 mt-1">
+                    <div class="col-md-4 mt-1 ml-5 mr-5">
                         <div class="form-group my-3">
                             <label>พนักงาน</label>
                             <select class="form-select"  name="emp_id" id="autoSizingSelect" >
                                 <option selected ></option>
                                 @foreach($emp as $row)
                                 <tr>
-                                     <option value="{{ $row->emp_id}}"> {{ $row->emp_fristname}} {{ $row->emp_lastname}}</option>
+                                     <option value="{{ $row->emp_id}}"> {{ $row->emp_fristname}} {{ $row->emp_lastname}}  </option>
                                 </tr>
-                            @endforeach 
+                               
+                            @endforeach
                             </select>
                             @error('emp_id')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
+                           
                         </div>
                     </div>
-                    <div class="col-md-12 ">
+                 
+                           {{-- <div class="form-group align-items-center text-center  ">   
+                                <img src="{{asset($emp->profile)}}" alt="" width="100px" height="150px" class="border rounded">
+                            </div>  --}}
+                          
+                    <div class="col-md-4 ml-5 ">
                         <div class="form-group my-3">
                             <label>วันที่จ่าย</label>
                             <input type="date" name="date" class="form-control mt-1" placeholder="lastname">
@@ -49,7 +56,7 @@
                     </div>
                       
                    
-                    <div class="col-md-12">
+                    <div class="col-md-4 ml-5 mr-5">
                         <div class="form-group my-3">
                             <label>ค่าจ้างรายวัน</label>
                           
@@ -60,7 +67,7 @@
                         </div>
                         
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-4 ml-5">
                         <div class="form-group my-3">
                             <label>จำนวนวันที่ทำ</label>
                             <input type="number" name="number" class="form-control mt-1" placeholder="number">
@@ -71,7 +78,7 @@
                     </div>
                     
                    
-                    <div class="col-md-12 form-inline">
+                    <div class="col-md-4 ml-5 mr-5 form-inline">
                         <div class="">
                             <button type="submit" class="mt-3 btn btn-primary">Submit</button></div>
                         <div class="">

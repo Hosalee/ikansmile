@@ -18,7 +18,7 @@ class SalaryController extends Controller
     {
         //
         $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
-        ->select('salaries.*','employees.emp_fristname','employees.emp_lastname')->paginate(5);
+        ->select('salaries.*','employees.emp_fristname','employees.emp_lastname','employees.profile')->paginate(5);
 
         return view('admin.salary.index',compact('Salary'));
     }
@@ -101,12 +101,7 @@ class SalaryController extends Controller
      */
     public function edit( $id)
     {
-        //
-        // $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
-        // ->select('salaries.*','employees.emp_fristname','employees.emp_lastname');
-
-        // return view('admin.salary.index',compact('Salary'));
-        // $emp = employee::find($id);
+        
         $Slr = salary::find($id);
         return view('admin.salary.editSalary',compact('Slr'));
     }
@@ -118,9 +113,30 @@ class SalaryController extends Controller
      * @param  \App\Models\salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, salary $salary)
+    public function update(Request $request,$id)
     {
         //
+        
+            //คำนวนค่ารวม
+             $amount1=$request->amount;
+             $number1=$request->number;
+             $totalAmount = ($amount1*$number1);
+            //อัพเดตข้อมูล
+            salary::find($id)->update([
+
+                'emp_id' => $request->emp_id,    
+                'date' => $request->date,
+                'amount' => $request->amount,
+                'number'=> $request->number,
+                'status'=> 'จ่ายแล้ว',
+                'totalAmount'=> $totalAmount
+                  
+            ]);
+
+            return redirect()->route('salary')->with('success',"อัพเดตข้อมูลค่าจ้างเรียบร้อย");
+
+     
+
     }
 
     /**
@@ -129,8 +145,10 @@ class SalaryController extends Controller
      * @param  \App\Models\salary  $salary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(salary $salary)
+    public function destroy($id)
     {
         //
+        $delete=salary::find($id)->delete();
+         return redirect()->back()->with('success',"ลบข้อมูลเรียบร้อย");
     }
 }

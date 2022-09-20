@@ -15,7 +15,7 @@
            
            
            
-            <form action="{{-- route('salaryStore')--}}" method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{url('/salary/updateSalary/'.$Slr->salary_id)}}" method="POST" enctype="multipart/form-data" class=" p-2">
                 @csrf
                 <div class="row">
                     
@@ -27,11 +27,7 @@
                             <label>พนักงาน</label>
                             <select class="form-select"  name="emp_id" id="autoSizingSelect" >
                                 <option selected value="{{$Slr->emp_id}}">{{$Slr->employee1->emp_fristname}} {{$Slr->employee1->emp_lastname}}</option>
-                                {{-- @foreach($emp as $row)
-                                <Slr
-                                     <option selected value="{{ $row->emp_id}}"> {{ $row->emp_fristname}} {{ $row->emp_lastname}}</option>
-                                </tr>
-                            @endforeach  --}}
+                               
                             </select>
                             @error('emp_id')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
