@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Authlogin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CageController;
 use App\Http\Controllers\CustomerController;
@@ -10,6 +12,9 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\SupplierController;
 use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
+
+
+// Route::post('/login',[Authlogin::class,'login'])->name('login');
 //แอตมิน//แดชบอร์ท
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
 //แอตมิน//ปลา
@@ -23,6 +28,9 @@ Route::post('/fish/addfish',[fishController::class,'store'])->name('adminAddfish
  Route::get('/cage',[CageController::class,'index'])->name('cage');
  Route::get('/cage/addCage',[CageController::class,'create'])->name('addCage');
  Route::post('/cage/storeCage',[CageController::class,'store'])->name('storeCage');
+ Route::get('/cage/editCage/{id}',[CageController::class,'edit'])->name('editCage');
+ Route::post('/cage/updateCage/{id}',[CageController::class,'update'])->name('updateCage');
+ Route::get('/cage/deleteCage/{id}',[CageController::class,'destroy'])->name('deleteCage');
 
 //แอตมิน//พนักงาน
 Route::get('/employee',[EmployeeController::class,'index'])->name('employee');
@@ -79,7 +87,7 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 //แอตมิน//แดชบอร์ท
 //Route::get('/homeCustomer',[dashboardController::class,'index'])->name('homeCustomer');
 //แอตมิน//ปลา
-Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
+// Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
 //แอตมิน//กระชัง
 //Route::get('/employee/cage',[CageController::class,'index'])->name('cage');
 //แอตมิน//พนักงาน
@@ -130,3 +138,7 @@ Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
 Route::get('/', function () {
     return view('login');
 });
+
+//  Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
+
+

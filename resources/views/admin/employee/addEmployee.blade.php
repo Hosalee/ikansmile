@@ -7,7 +7,7 @@
 
 
 <main class="col bg-faded py-3 flex-grow-1">
-    <div class="container mt-2">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>เพิ่มข้อมูลพนักงาน</h2>

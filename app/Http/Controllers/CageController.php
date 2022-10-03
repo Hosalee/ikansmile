@@ -62,7 +62,7 @@ class CageController extends Controller
         ]);
       
 
-      //เพิ่มข้อมูลเข้าปลา database
+      //เพิ่มข้อมูลเข้า database
         cage::insert([
        'cage_name' => $request->cage_name,    
        'cage_owner' => $request->cage_owner,
@@ -71,7 +71,7 @@ class CageController extends Controller
         'capicity'=> $request->capicity,
         'latitude'=> $request->latitude,
         'longitude'=> $request->longitude,
-        'status'=> "มีการเลี้ยง",
+        'status'=> "ว่าง",
 
     ]);
     
@@ -95,9 +95,11 @@ class CageController extends Controller
      * @param  \App\Models\cage  $cage
      * @return \Illuminate\Http\Response
      */
-    public function edit(cage $cage)
+    public function edit($id)
     {
         //
+        $Cage = cage::find($id);
+        return view('admin.cage.editCage',compact('Cage'));
     }
 
     /**
@@ -107,9 +109,23 @@ class CageController extends Controller
      * @param  \App\Models\cage  $cage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cage $cage)
+    public function update(Request $request,$id)
     {
         //
+        cage::find($id)->update([
+            'cage_name' => $request->cage_name,    
+            'cage_owner' => $request->cage_owner,
+             'size'=> $request->size,
+             'Address'=> $request->Address,
+             'capicity'=> $request->capicity,
+             'latitude'=> $request->latitude,
+             'longitude'=> $request->longitude,
+             
+     
+         ]);
+        
+         
+         return redirect()->route('cage')->with('success',"อัพเดตข้อมูลกระชังเรียบร้อย");
     }
 
     /**
@@ -118,8 +134,11 @@ class CageController extends Controller
      * @param  \App\Models\cage  $cage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cage $cage)
+    public function destroy( $id)
     {
         //
+        $Delete =cage::find($id)->delete();
+        return redirect()->back()->with('success',"ลบข้อมูลเรียบร้อย");
+
     }
 }

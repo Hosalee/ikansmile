@@ -15,7 +15,7 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $Emp = employee::paginate(5);
+        $Emp = employee::paginate(4);
         return view('admin.employee.index',compact('Emp'));
     }
 
@@ -91,7 +91,7 @@ class EmployeeController extends Controller
         'Email'=> $request->email,
         'tell'=> $request->tell,
         'Username'=> $request->username,
-        'Password'=> $request->password,
+        'Password'=>  md5($request->password),
       
 
 
@@ -179,7 +179,7 @@ class EmployeeController extends Controller
                  'Email'=> $request->email, 
                  'tell'=> $request->tell, 
                  'Useranme'=> $request->useranme, 
-                 'Password'=> $request->password, 
+                 'Password'=> md5($request->password), 
                   
             ]);
 
@@ -200,7 +200,7 @@ class EmployeeController extends Controller
                 'Email'=> $request->email, 
                 'tell'=> $request->tell, 
                 'Useranme'=> $request->useranme, 
-                'Password'=> $request->password, 
+                'Password'=> md5($request->password), 
                
             ]);
             return redirect()->route('employee')->with('success',"อัพเดตข้อมูลพนักงานเรียบร้อย");

@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col py-3 flex-grow-1" style="background-color: #dae9e4">
-  <div class="container mt-2">
+<main class="col py-4 flex-grow-1" style="background-color: #dae9e4">
+  <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12   text-center ">
             <h2 >ข้อมูลค่าจ้างพนักงาน</h2>

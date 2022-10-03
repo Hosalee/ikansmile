@@ -6,8 +6,8 @@
 
 
 
-<main class="col bg-faded py-3 flex-grow-1">
-    <div class="container mt-2">
+<main class="col bg-faded py-4 flex-grow-1">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>เพิ่มข้อมูลลูกค้า</h2>

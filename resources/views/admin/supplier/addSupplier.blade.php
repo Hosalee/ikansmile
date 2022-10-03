@@ -6,8 +6,8 @@
 
 
 
-<main class="col bg-faded py-3 flex-grow-1">
-    <div class="container mt-2">
+<main class="col bg-faded py-4 flex-grow-1">
+    <div class="container mt-5">
         <div class="row">
         
             <form action="{{ route('storeSupplier') }}" method="POST" enctype="multipart/form-data" class=" p-2 ">

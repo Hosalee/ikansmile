@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col bg-faded py-3 flex-grow-1">
-  <div class="container mt-2">
+<main class="col bg-faded py-4 flex-grow-1">
+  <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12   text-center ">
             <h2 >ข้อมูลกระชัง</h2>
@@ -28,8 +28,10 @@
               <th>ชื่อ</th>
               <th>เจ้าของ</th>
               <th>ที่อยู่</th>
-              <th>ขนาดและความจุ</th>
-              <th>ละติจุด,ลองจิจุด</th>
+              <th>ขนาด</th>
+              <th>ความจุ</th>
+              <th>ละติจุด</th>
+              <th>ลองจิจุด</th>
               <th>สถานะ</th>
               <th width="auto px">Action</th>
           </tr>
@@ -39,8 +41,10 @@
                   <td>{{ $row->cage_name }}</td>
                   <td>{{  $row->cage_owner }}</td>
                    <td>{{  $row->Address }}</td>
-                    <td>{{  $row->size }} , {{  $row->capicity }}</td> 
-                    <td>{{  $row->latitude }} , {{  $row->longitude }}</td>
+                    <td>{{  $row->size }} </td>
+                    <td>{{  $row->capicity }}</td> 
+                    <td>{{  $row->latitude }} </td>
+                    <td> {{  $row->longitude }}</td>
                     @if ($row->status=='ว่าง')
                     <div class=""></div>
                       <td class=""> <div class="text-white btn btn-danger pl-4 pr-4 pt-2" >{{  $row->status }}</div></td>
@@ -52,8 +56,8 @@
 
                  
                   <td>
-                   <a href="{{--url('/fish/editfish/'.$row->fish_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    <a href="{{--route('Deletefish',$row->fish_id)--}}" 
+                   <a href="{{ route('editCage',$row->cage_id) }}" class="btn btn-warning bi bi-pencil-square"></a>
+                    <a href="{{route('deleteCage',$row->cage_id)}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 

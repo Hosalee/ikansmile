@@ -1,23 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light  " style="background-color: #16b7d3">
-    <a class="navbar-brand" href="#"><b>Ikan Smile</b></a>  		
+<style>
+    .fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+</style>
+<nav class="  navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #5ddce8">
+    <a class="navbar-brand ml-5" href="#"><b>Ikan Smile</b></a>  		
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <!-- แถบด้านบน -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <div class="navbar-nav ml-auto">
-            <div class="navbar-form-wrapper ">
-                <form class="navbar-form form-inline  ">
-                    {{-- <div class="input-group search-box ">								
-                        <input type="text" id="search" class="form-control  py-1 " placeholder="Search Here...">
-                        <div class="input-group-append ">
-                            <span class="input-group-text py-1">
-                                <i class="material-icons">&#xE8B6;</i>
-                            </span>
-                        </div>
-                    </div> --}}
-                </form>
-            </div>
+           
            
             <a href="" class="nav-item nav-link"><i class="fa fa-sign-out py-1"> Logout</i></a>
         </div>		
@@ -25,3 +32,5 @@
     
 </nav>
 
+
+ 
