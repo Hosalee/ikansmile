@@ -168,7 +168,7 @@ background-color: #ffffff;
                           </button>
                           <div class="dropdown-container">
                             <a href="#">ข้อมูลสต๊อกวัตถุดิบ</a>
-                            <a href="#">ข้อมูลสต๊อกปลา</a>
+                            <a href="#">ข้อมูลสต๊อกอาหารปลา</a>
                             
                           </div>
                     <a href="#">ข้อมูลการผลิตอาหารปลา</a>

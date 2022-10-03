@@ -12,6 +12,16 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
+    public function LogIn(Request $r){
+        
+
+    }
+
+
+
+
     public function index()
     {
         //
@@ -92,6 +102,7 @@ class EmployeeController extends Controller
         'tell'=> $request->tell,
         'Username'=> $request->username,
         'Password'=>  md5($request->password),
+        'position'=>'employee'
       
 
 
@@ -200,7 +211,8 @@ class EmployeeController extends Controller
                 'Email'=> $request->email, 
                 'tell'=> $request->tell, 
                 'Useranme'=> $request->useranme, 
-                'Password'=> md5($request->password), 
+                'Password'=> md5($request->password),
+                
                
             ]);
             return redirect()->route('employee')->with('success',"อัพเดตข้อมูลพนักงานเรียบร้อย");

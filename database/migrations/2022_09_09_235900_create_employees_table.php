@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('profile');
             $table->string('Username');
             $table->string('Password');
-            $table->integer('salary');
+            $table->string('position');
             
 
 

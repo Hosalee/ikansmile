@@ -9,7 +9,7 @@
   <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12   text-center">
-            <h2>หน้า Dashboard </h2>
+            <h2>หน้า Home Hello Employee</h2>
         </div>
 
      

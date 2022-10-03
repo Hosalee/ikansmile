@@ -24,9 +24,11 @@
     <!-- แถบด้านบน -->
     <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
         <div class="navbar-nav ml-auto">
+            @if ($message = Session::get('user_name'))
+            <label class="navbar-brand font-family " style="color: black"><i class="bi bi-person-circle "></i>   {{$message }}</label>
+            @endif
            
-           
-            <a href="" class="nav-item nav-link"><i class="fa fa-sign-out py-1"> Logout</i></a>
+            <a href="{{ route('logout') }}" class="nav-item nav-link mr-2 " style="color:rgb(75, 66, 66)"><i class="bi bi-door-open-fill"></i> Logout</a>
         </div>		
     </div>
     

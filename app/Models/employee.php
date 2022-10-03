@@ -19,7 +19,11 @@ class employee extends Model
         'profile',
         'Username',
         'Password',
+        'position',
         
     ];
     protected $primaryKey = 'emp_id';
+    
+    // protected $table ='employees';
+    
 }

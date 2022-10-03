@@ -1,7 +1,7 @@
 <?php
-
-use App\Http\Controllers\Authlogin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+
 use App\Http\Controllers\CageController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
@@ -14,7 +14,9 @@ use Symfony\Component\Finder\Iterator\CustomFilterIterator;
 
 
 
-// Route::post('/login',[Authlogin::class,'login'])->name('login');
+Route::post('/Checklogin',[LoginController::class,'login'])->name('Checklogin');
+Route::get('/protect',[LoginController::class,'protect'])->name('protect');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 //แอตมิน//แดชบอร์ท
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
 //แอตมิน//ปลา
@@ -135,9 +137,7 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 
 //
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', function () { return view('login');})->name('login');
 
 //  Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 
