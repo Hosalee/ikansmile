@@ -6,8 +6,9 @@
 
 
 
-<main class="col bg-faded py-4 flex-grow-1">
-    <div class="container mt-5">
+<main class="col bg-faded py-4 flex-grow-1" style="background-color: #fbfeff">
+    <div class="row mt-5"></div>
+  <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>เพิ่มข้อมูลปลา</h2>
@@ -24,7 +25,8 @@
                 <div class="row">
                     <div class="col-md-12 ">
                         <div class="form-group my-3">
-                            <label for="picture">รูปปลา</label>
+                            
+                            <h6 class="ml-2 my-2"><b>รูปปลา</b></h6>
                             <input type="file" class="form-control" name="picture"  placeholder="Fish Picture">
                             @error('picture')
                             <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -35,7 +37,8 @@
                     
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>ชื่อปลา</strong>
+                           
+                            <h6 class="ml-2 my-2"><b>ชื่อปลา</b></h6>
                             <input type="text" name="name" class="form-control" placeholder="Fish Name">
                             @error('name')
                                 <div class="alert alert-danger mt-1 ">{{ $message }}</div>
@@ -44,7 +47,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>พันธุ์ปลา</strong>
+                            
+                            <h6 class="ml-2 my-2"><b>พันธุ์ปลา</b></h6>
                             <input type="text" name="species" class="form-control" placeholder="Fish Species">
                             @error('species')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -56,7 +60,7 @@
                     
                     <div class="col-md-12">
                         <div class="form-group my-3">
-                            <strong>ลักษณะปลา</strong>
+                            <h6 class="ml-2 my-2"><b>ลักษณะปลา</b></h6>
                             <textarea class="form-control" name="fish_appearance" id="exampleFormControlTextarea1" rows="3" placeholder="Fish Species"></textarea>
                             
                             @error('fish_appearance')
@@ -65,11 +69,11 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 form-inline">
+                    <div class="col-md-12 form-inline ml-3">
+                        <div class="m-lg-2">
+                            <button type="submit" class="mt-3 btn btn-success ">Submit</button></div>
                         <div class="">
-                            <button type="submit" class="mt-3 btn btn-primary">Submit</button></div>
-                        <div class="">
-                            <a href="{{ route('fish') }}" class="btn btn-danger ml-4 mt-3 ">ย้อนกลับ</a>
+                            <a href="{{ route('fish') }}" class="btn btn-danger ml-4 mt-3 px-4">Back</a>
                         </div>
                     </div>
                   

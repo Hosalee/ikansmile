@@ -5,15 +5,16 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col  py-4 flex-grow-1" style="background-color: #d3d4d5">
-  <div class="container mt-5">
+<main class="col  py-4 flex-grow-1" style="background-color: #fbfeff">
+  <div class="row mt-5"></div>
+  <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12   text-center ">
             <h2 >ข้อมูลปลา</h2>
         </div>
       
         <div class="pl-0">
-        <a href="{{route('addfish')}}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลปลา</a>
+        <a href="{{route('addfish')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0 "></i> เพิ่มข้อมูลปลา</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -22,17 +23,17 @@
         </div>
         @endif
 
-        <table class="table table-bordered  mt-3 text-center">
-          <tr class="bg-info text-white  ">
-              <th>#</th>
-              <th>รูปปลา</th>
-              <th>ชื่อปลา</th>
-              <th>พันธ์ุปลา</th>
-              <th>ลักษณะปลา</th>
+        <table class="table table-responsive-lg  mt-3 text-center">
+          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
+              <th width="50 px">#</th>
+              <th width="100 px">รูปปลา</th>
+              <th width="100 px">ชื่อปลา</th>
+              <th width="100 px">พันธ์ุปลา</th>
+              <th >ลักษณะปลา</th>
               <th width="150 px">Action</th>
           </tr>
          @foreach($Fish as $row)
-              <tr style="background-color: #f6fffc">
+              <tr style="background-color: #ffffff">
                  <td>{{$Fish->firstItem()+$loop->index }}</td>
                   <td><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
                   <td>{{ $row->name }}</td>

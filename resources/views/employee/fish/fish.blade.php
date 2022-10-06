@@ -1,20 +1,22 @@
 @extends('layouts.master')
 @include('navbar.header')
 @section('content')
+@include('sidebar.sidebar2')
 
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col bg-faded py-3 flex-grow-1">
-  <div class="container mt-2">
+<main class="col bg-faded py-4 flex-grow-1">
+  <div class="row mt-5"></div>
+  <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12   text-center ">
-            <h2 >ข้อมูลปลา</h2>
+            <h2 ><b>ข้อมูลปลา</b></h2>
         </div>
       
-        <div class="pl-0">
+        {{-- <div class="pl-0">
         <a href="{{route('addfish')}}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลปลา</a>
-        </div>
+        </div> --}}
 
         @if ($message = Session::get('success'))
         <div class="alert alert-success mt-2">
@@ -22,14 +24,14 @@
         </div>
         @endif
 
-        <table class="table table-bordered  mt-3 text-center">
+        <table class="table table-responsive-lg  mt-3 text-center" style="color: black ">
           <tr class="bg-dark text-white  ">
-              <th>#</th>
-              <th>รูปปลา</th>
-              <th>ชื่อปลา</th>
-              <th>พันธ์ุปลา</th>
+              <th  width="50 px">#</th>
+              <th width="100 px">รูปปลา</th>
+              <th width="100 px">ชื่อปลา</th>
+              <th width="100 px">พันธ์ุปลา</th>
               <th>ลักษณะปลา</th>
-              <th width="150 px">Action</th>
+              {{-- <th width="150 px">Action</th> --}}
           </tr>
          @foreach($Fish as $row)
               <tr>
@@ -40,7 +42,7 @@
                   <td class="text-wrap text-left" style="width: 18rem;" > 
                     {{ Str::limit( $row->fish_appearance,150)}}
                  </td>
-                  <td>
+                  {{-- <td>
                  
 
 
@@ -51,7 +53,7 @@
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 
                    
-                  </td>
+                  </td> --}}
               </tr>
           @endforeach
       </table>

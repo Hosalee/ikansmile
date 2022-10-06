@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col py-4 flex-grow-1" style="background-color: #dae9e4">
+<main class="col py-4 flex-grow-1" style="background-color: #fbfeff">
+  <div class="row mt-5"></div>
   <div class="container mt-5">
     <div class="row">
         <div class="col-lg-12   text-center ">
@@ -25,8 +26,8 @@
         </div>
         @endif
 
-        <table class="table table-bordered  mt-3 text-center" >
-          <tr class="bg-info text-white  ">
+        <table class="table table-responsive-lg  mt-3 text-center">
+          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
                <th>#</th>  
               <th>วันที่จ่าย</th>
               <th width="150px">ชื่อ</th> 
@@ -38,7 +39,7 @@
               <th width="150px">Action</th>
           </tr>
      @foreach($Salary as $row)
-              <tr class="" style="background-color: #e2ebfc">
+     <tr style="background-color: #ffffff">
                    <td>{{$Salary->firstItem()+$loop->index }}</td> 
                   <td>{{  $row->date }}</td>
                   <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>

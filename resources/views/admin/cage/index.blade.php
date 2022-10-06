@@ -6,14 +6,15 @@
 
 
 <main class="col bg-faded py-4 flex-grow-1">
-  <div class="container mt-5">
+  <div class="row mt-5"></div>
+  <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12   text-center ">
             <h2 >ข้อมูลกระชัง</h2>
         </div>
       
         <div class="pl-0">
-        <a href="{{ route('addCage') }}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลกระชัง</a>
+        <a href="{{ route('addCage') }}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลกระชัง</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -22,32 +23,30 @@
         </div>
         @endif
 
-        <table class="table table-bordered  mt-3 text-center">
-          <tr class="bg-dark text-white  ">
-              <th>#</th>
-              <th>ชื่อ</th>
-              <th>เจ้าของ</th>
-              <th>ที่อยู่</th>
-              <th>ขนาด</th>
-              <th>ความจุ</th>
-              <th>ละติจุด</th>
-              <th>ลองจิจุด</th>
-              <th>สถานะ</th>
-              <th width="auto px">Action</th>
+        <table class="table table-responsive-lg  mt-3 text-center">
+          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
+              <th width="50 px">#</th>
+              <th width="50 px">ชื่อ</th>
+              <th width="50 px">เจ้าของ</th>
+              <th width="150 px">ที่อยู่</th>
+              <th width="50 px">ขนาด</th>
+              <th width="50 px">ความจุ</th>
+              <th width="150 px">ละติจุด , ลองจิจุด</th>
+              <th width="50 px">สถานะ</th>
+              <th width="50 px">Action</th>
           </tr>
          @foreach($Cage as $row)
-              <tr>
+              <tr style="background-color: #ffffff" >
                   <td>{{$Cage->firstItem()+$loop->index }}</td>
                   <td>{{ $row->cage_name }}</td>
                   <td>{{  $row->cage_owner }}</td>
                    <td>{{  $row->Address }}</td>
                     <td>{{  $row->size }} </td>
                     <td>{{  $row->capicity }}</td> 
-                    <td>{{  $row->latitude }} </td>
-                    <td> {{  $row->longitude }}</td>
+                    <td>{{  $row->latitude }} , {{  $row->longitude }}</td>
                     @if ($row->status=='ว่าง')
                     <div class=""></div>
-                      <td class=""> <div class="text-white btn btn-danger pl-4 pr-4 pt-2" >{{  $row->status }}</div></td>
+                      <td class=""> <div class="text-white btn btn-danger px-4 pt-2" >{{  $row->status }}</div></td>
                     @endif
                     @if ($row->status!='ว่าง')
                     <td class=""> <div class="text-white btn btn-success " >{{$row->status}}</div></td>

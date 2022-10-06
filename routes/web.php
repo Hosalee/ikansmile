@@ -19,6 +19,8 @@ Route::get('/protect',[LoginController::class,'protect'])->name('protect');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 //แอตมิน//แดชบอร์ท
 Route::get('/dashboard',[dashboardController::class,'index'])->name('dashboard');
+//พนักงาน//หน้าแรก
+Route::get('/home',[LoginController::class,'home'])->name('home');
 //แอตมิน//ปลา
 Route::get('/fish',[fishController::class,'index'])->name('fish');
 Route::get('/fish/delete/{id}',[fishController::class,'destroy'])->name('Deletefish');
@@ -89,7 +91,7 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 //แอตมิน//แดชบอร์ท
 //Route::get('/homeCustomer',[dashboardController::class,'index'])->name('homeCustomer');
 //แอตมิน//ปลา
-// Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
+Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
 //แอตมิน//กระชัง
 //Route::get('/employee/cage',[CageController::class,'index'])->name('cage');
 //แอตมิน//พนักงาน
@@ -138,6 +140,7 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 //
 
 Route::get('/', function () { return view('login');})->name('login');
+
 
 //  Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('login');
 
