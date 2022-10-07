@@ -8,7 +8,7 @@
 
 <main class="col bg-faded py-4 flex-grow-1" style="background-color: #fbfeff">
     <div class="row mt-5"></div>
-  <div class="container mt-3">
+  <div class="container mt-3 ">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>เพิ่มข้อมูลปลา</h2>
@@ -20,7 +20,7 @@
                 </div>
             @endif
            
-            <form action="{{ route('adminAddfish') }}" method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{ route('adminAddfish') }}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     <div class="col-md-12 ">

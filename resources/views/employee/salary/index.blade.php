@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @include('navbar.header')
 @section('content')
-@include('sidebar.sidebar')
+@include('sidebar.sidebar2')
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
@@ -14,8 +14,8 @@
         </div>
       
         <div class="pl-0 mt-4 ">
-        <a href="{{route('addSalary')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
-        </div>
+        {{-- <a href="{{route('addSalary')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
+        </div> --}}
         <div class=""></div>
         
        
@@ -28,22 +28,23 @@
 
         <table class="table table-responsive-lg  mt-3 text-center">
           <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
-               <th>#</th>  
-              <th>วันที่จ่าย</th>
-              <th width="150px">ชื่อ</th> 
-              {{-- <th>วันที่จ่าย</th> --}}
+               {{-- <th>#</th>   --}}
+              <th>วันที่ได้รับเงิน</th>
+              {{-- <th width="150px">ชื่อ</th>  --}}
+              
               <th>ค่าจ้างรายวัน</th>
               <th>วันที่เข้างาน</th>
               <th>ค่าจ้างรวม</th>
               <th>สถานะ</th>
-              <th width="150px">Action</th>
+              {{-- <th width="150px">Action</th> --}}
           </tr>
      @foreach($Salary as $row)
      <tr style="background-color: #ffffff">
-                   <td>{{$Salary->firstItem()+$loop->index }}</td> 
+                   {{-- <td>{{$Salary->firstItem()+$loop->index }}</td>  --}}
                   <td>{{  $row->date }}</td>
-                  <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>
-                  {{-- <td>{{  $row->date }}</td> --}}
+                  
+                  {{-- <td>{{ $name->emp_fristname}} {{ $name->emp_lastname}}</td>  --}}
+                  
                    <td>{{  $row->amount}}</td>
                     <td>{{  $row->number }}</td>
                      <td >{{  $row->totalAmount}}</td>
@@ -53,19 +54,19 @@
                        
 
                  
-                  <td>
+                  {{-- <td>
            
        
 
 
-                   <a href="{{route('editSalary',$row->salary_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    <a href="{{route('DeleteSalary',$row->salary_id)}}" 
+                   <a href="{{--route('editSalary',$row->salary_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
+                    <a href="{{--route('DeleteSalary',$row->salary_id)}}" 
                         
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 
                    
-                  </td>
+                  </td> --}}
               </tr>
           @endforeach 
       </table>

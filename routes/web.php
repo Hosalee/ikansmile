@@ -90,12 +90,17 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 
 //แอตมิน//แดชบอร์ท
 //Route::get('/homeCustomer',[dashboardController::class,'index'])->name('homeCustomer');
-//แอตมิน//ปลา
+//พนักงาน//ปลา
 Route::get('/employee/fish',[fishController::class,'show'])->name('showfish');
-//แอตมิน//กระชัง
-//Route::get('/employee/cage',[CageController::class,'index'])->name('cage');
-//แอตมิน//พนักงาน
-//Route::get('/employee/employee',[EmployeeController::class,'index'])->name('employee');
+//พนักงาน//กระชัง
+Route::get('/employee/cage',[CageController::class,'show'])->name('Showcage');
+//พนักงาน//พนักงาน
+Route::get('/employee/employee',[EmployeeController::class,'Show'])->name('showEmployee');
+Route::get('/employee/employeeEdit/{id}',[EmployeeController::class,'employeeEdit'])->name('employeeEdit');
+Route::post('/employee/employeeUpdate/{id}',[EmployeeController::class,'employeeUpdate'])->name('employeeUpdate');
+//พนักงาน//กระชัง
+Route::get('/employee/salaryEmployee/',[SalaryController::class,'show'])->name('ShowSalary');
+
 //Route::get('/employee/editEmployee/{id}',[EmployeeController::class,'edit'])->name('editEmployee');
 //Route::post('/employee/updateEmployee/{id}',[EmployeeController::class,'update']);
 //แอตมิน//:ซัพพลาย

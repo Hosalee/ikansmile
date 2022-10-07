@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @include('navbar.header')
 @section('content')
-@include('sidebar.sidebar')
+@include('sidebar.sidebar2')
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
@@ -15,7 +15,7 @@
             </div>
            
            
-            <form action="{{url('/employee/updateEmployee/'.$emp->emp_id)}}"  method="POST" enctype="multipart/form-data" class=" p-5">
+            <form action="{{route('employeeUpdate',$emp->emp_id)}}"  method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row  align-items-end ">
                     
@@ -66,8 +66,8 @@
                         <label>เพศ</label>
                         <select class="form-select"  name="sex" id="autoSizingSelect"  >
                           <option selected> {{$emp->sex}}</option>
-                          <option value="Men">ชาย(Men)</option>
-                          <option value="Women">หญิง(Women)</option>
+                          <option value="ชาย">ชาย(Men)</option>
+                          <option value="หญิง">หญิง(Women)</option>
                         </select>
                         @error('sex')
                             <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -130,7 +130,7 @@
                         <div class="m-lg-2">
                             <button type="submit" class="mt-3 btn btn-warning">Update</button></div>
                         <div class="">
-                            <a href="{{ route('employee') }}" class="btn btn-danger ml-4 mt-3 px-4">Back</a>
+                            <a href="{{ route('showEmployee') }}" class="btn btn-danger ml-4 mt-3 px-4">Back</a>
                         </div>
                     </div>
                   

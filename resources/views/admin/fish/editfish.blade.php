@@ -16,7 +16,7 @@
            
            
            
-            <form action="{{url('/fish/update/'.$fish->fish_id)}}" method="POST" enctype="multipart/form-data" class=" p-2 ">
+            <form action="{{url('/fish/update/'.$fish->fish_id)}}" method="POST" enctype="multipart/form-data" class=" p-5 ">
                 @csrf 
                 <div class="row">
                     <div class="col-md-12 ">

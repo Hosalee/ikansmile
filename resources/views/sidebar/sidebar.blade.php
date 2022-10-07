@@ -19,7 +19,7 @@
 .sidenav {
 margin-top: 3.5em;
 height: 100%;
-width: 250px;
+width: 230px;
 position: fixed;
 z-index: 1;
 top: 0;

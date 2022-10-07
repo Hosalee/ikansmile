@@ -5,17 +5,18 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/profile.css')}}">
 
 
-<main class="col bg-faded py-4 flex-grow-1">
-  <div class="container mt-5">
+<main class="col  py-4 flex-grow-1" style="background-color: #fbfeff">
+  <div class="row mt-5"></div>
+  <div class="container mt-3">
     <div class="row">
 
-        <div class="col-lg-12  text-center my-3 ">
+        <div class="col-lg-12  text-center  ">
             <h2 >ข้อมูลซัพพลายเออร์</h2>
           
         </div>
       
         <div class="pl-0 mt-3 ">
-        <a href="{{route('addSupplier')}}" class="btn btn-success mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลซัพพลายเออร์</a>
+        <a href="{{route('addSupplier')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลซัพพลายเออร์</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -24,18 +25,18 @@
         </div>
         @endif
 
-        <table class="table table-bordered  mt-3 text-center">
-          <tr class="bg-dark text-white  ">
-              <th>#</th>
-              <th>รูป</th>
-              <th>ชื่อ</th>
+        <table class="table table-responsive-lg  mt-3 text-center">
+          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
+              <th width="20 px">#</th>
+              <th width="150 px">รูป</th>
+              <th width="100 px">ชื่อ</th>
               <th width="250 px">ที่อยู่</th>
-              <th>Email</th>
-              <th>เบอร์โทร</th>
+              <th width="150 px">Email</th>
+              <th width="150 px">เบอร์โทร</th>
               <th width="150 px">Action</th>
           </tr>
           @foreach($Sp as $row)
-              <tr>
+          <tr style="background-color: #ffffff">
                  <td>{{$Sp->firstItem()+$loop->index }}</td>
                   <td><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
                   <td>{{ $row->name }}</td>

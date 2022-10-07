@@ -121,15 +121,15 @@ background-color: #ffffff;
                   {{-- <center><img src="{{asset('/img/TRAVELOCAL-GP.png')}}" id="logo" alt="" width="180" height="auto"></center><BR> --}}
                       <a class=" mt-1 mb-3  text-center " href="{{route('home')}}"><b>หน้าแรก</b></a>  
                       <a href="{{route('showfish')}}">ข้อมูลปลา</a>
-                      <a href="{{route('cage')}}">ข้อมูลกระชัง</a>
+                      <a href="{{route('Showcage')}}">ข้อมูลกระชัง</a>
                     <button class="dropdown-btn"><i class=""></i> ข้อมูลบุคคล
                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                      <a href="{{route('employee')}}">ข้อมูลพนักงาน</a>
-                      <a href="{{route('salary')}}">ข้อมูลค่าจ้างพนักงาน</a>
-                      <a href="{{route('supplier')}}">ข้อมูลซัพพลายเออร์</a>
-                      <a href="{{route('customer')}}">ข้อมูลลูกค้า</a>
+                      <a href="{{route('showEmployee')}}">ข้อมูลพนักงาน</a>
+                      <a href="{{route('ShowSalary')}}">ข้อมูลค่าจ้างพนักงาน</a>
+                      <a href="{{--route('supplier')--}}">ข้อมูลซัพพลายเออร์</a>
+                      <a href="{{--route('customer')--}}">ข้อมูลลูกค้า</a>
                     </div>
                     <button class="dropdown-btn"><i class=""></i>ข้อมูลอาหาร
                     <i class="fa-sharp fa-solid fa-caret-down"></i>

@@ -11,7 +11,7 @@
   <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12   text-center ">
-            <h2 ><b>ข้อมูลปลา</b></h2>
+          <h2 >ข้อมูลปลา</h2>
         </div>
       
         {{-- <div class="pl-0">
@@ -24,8 +24,8 @@
         </div>
         @endif
 
-        <table class="table table-responsive-lg  mt-3 text-center" style="color: black ">
-          <tr class="bg-dark text-white  ">
+        <table class="table table-responsive-lg  mt-3 text-center">
+          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
               <th  width="50 px">#</th>
               <th width="100 px">รูปปลา</th>
               <th width="100 px">ชื่อปลา</th>
@@ -34,7 +34,7 @@
               {{-- <th width="150 px">Action</th> --}}
           </tr>
          @foreach($Fish as $row)
-              <tr>
+         <tr style="background-color: #ffffff">
                  <td>{{$Fish->firstItem()+$loop->index }}</td>
                   <td><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
                   <td>{{ $row->name }}</td>

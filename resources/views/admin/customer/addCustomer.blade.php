@@ -7,7 +7,8 @@
 
 
 <main class="col bg-faded py-4 flex-grow-1">
-    <div class="container mt-5">
+    <div class="row mt-5"></div>
+    <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>เพิ่มข้อมูลลูกค้า</h2>
@@ -15,7 +16,7 @@
            
            
            
-            <form action="{{ route('storeCustomer') }}" method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{ route('storeCustomer') }}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                    
@@ -52,10 +53,12 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-12">
+                    <div class="col-md-4">
                         <div class="form-group my-3">
                             <label>ที่อยู่</label>
-                            <input type="text" name="Address" class="form-control mt-1" placeholder=" Address">
+                          
+                            <textarea class="form-control" name="Address" style="height: 60px"  placeholder="Address"></textarea>
+                            
                             @error('Address')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
@@ -84,11 +87,11 @@
                     
                     
                    
-                    <div class="col-md-12 form-inline">
+                    <div class="col-md-12 form-inline ml-3">
+                        <div class="m-lg-2">
+                            <button type="submit" class="mt-3 btn btn-success">Submit</button></div>
                         <div class="">
-                            <button type="submit" class="mt-3 btn btn-primary">Submit</button></div>
-                        <div class="">
-                            <a href="{{ route('customer') }}" class="btn btn-danger ml-4 mt-3 ">ย้อนกลับ</a>
+                            <a href="{{ route('customer') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
                         </div>
                     </div>
                   

@@ -7,14 +7,15 @@
 
 
 <main class="col bg-faded py-4 flex-grow-1">
-    <div class="container mt-5">
+    <div class="row mt-5"></div>
+    <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 ">
                 <h2 class=" ">แก้ไขข้อมูลซัพพลายเออร์</h2>
             </div>
            
            
-            <form action="{{url('/supplier/updateSupplier/'.$Sp->supplier_id)}}"  method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{url('/supplier/updateSupplier/'.$Sp->supplier_id)}}"  method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row  align-items-end ">
                     
@@ -47,7 +48,9 @@
                 <div class="col-md-12">
                     <div class="form-group my-2">
                         <label>ที่อยู่</label>
-                        <input type="text" name="Address" class="form-control mt-1"  value="{{$Sp->Address}}">
+                        
+                        <textarea  class="form-control" name="Address"  style="height: 100px"   >{{$Sp->Address}}</textarea> 
+                            
                         @error('Address')
                             <div class="alert alert-danger mt-1">{{ $message }}</div>
                         @enderror
@@ -77,11 +80,11 @@
 
                 
             </div> 
-                    <div class="col-md-12 form-inline">
+                    <div class="col-md-12 form-inline ml-3">
+                        <div class="m-lg-2">
+                            <button type="submit" class="mt-3 btn btn-warning">Update</button></div>
                         <div class="">
-                            <button type="submit" class="mt-3 btn btn-primary">Submit</button></div>
-                        <div class="">
-                            <a href="{{ route('supplier') }}" class="btn btn-danger ml-4 mt-3 ">ย้อนกลับ</a>
+                            <a href="{{ route('supplier') }}" class="btn btn-danger ml-4 mt-3 px-4">Back</a>
                         </div>
                     </div>
                   

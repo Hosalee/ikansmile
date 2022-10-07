@@ -87,6 +87,8 @@ class CageController extends Controller
     public function show(cage $cage)
     {
         //
+        $Cage = cage::paginate(5);
+        return view('employee.cage.index',compact('Cage'));
     }
 
     /**

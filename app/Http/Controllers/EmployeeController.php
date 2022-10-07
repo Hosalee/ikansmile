@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -14,10 +15,7 @@ class EmployeeController extends Controller
      */
     
 
-    public function LogIn(Request $r){
-        
-
-    }
+    
 
 
 
@@ -25,7 +23,7 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $Emp = employee::paginate(4);
+        $Emp = employee::where('position','employee')->paginate(5);
         return view('admin.employee.index',compact('Emp'));
     }
 
@@ -123,6 +121,13 @@ class EmployeeController extends Controller
     public function show(employee $employee)
     {
         //
+        $id = session()->get('user_id');
+        
+        
+        $Emp = DB::table('employees')->where('emp_id', $id)->get();
+        
+        // dd($Emp);
+         return view('employee.employee.index',compact('Emp'));
     }
 
     /**
@@ -139,6 +144,7 @@ class EmployeeController extends Controller
      
        
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -238,4 +244,101 @@ class EmployeeController extends Controller
         $delete=employee::find($emp_id)->delete();
          return redirect()->back()->with('success',"ลบข้อมูลพนักงานเรียบร้อย");
     }
+
+
+    //พนักงานแก้ไขข้อมูลส่วนตัว
+    public function employeeEdit( $id)
+    {
+        //
+        $emp = employee::find($id);
+        return view('employee.employee.editEmployee',compact('emp'));
+     
+       
+    }
+    //พนักงาน Update ข้อมูลส่วนตัว
+    public function employeeUpdate(Request $request,$emp_id)
+    {
+        //
+        $request->validate([
+            // 'emp_fristname'=>'required:',
+            // 'emp_lastname'=>'required',
+            // 'sex'=>'required',
+            // 'Address'=>'required',
+            // 'email'=>'required',
+            // 'tell'=>'required',
+            // 'useranme'=>'required',
+            // 'password'=>'required',
+        
+        ]
+        );
+        $image = $request->file('profile');
+        //อัพเดตภาพและชื่อ
+        if( $image){
+
+            //Generate ชื่อภาพ
+            $name_gen=hexdec(uniqid());
+             // ดึงนามสกุลไฟล์ภาพ
+            $img_ext = strtolower($image->getClientOriginalExtension());
+            $img_name = $name_gen.'.'.$img_ext;
+        
+        
+            //อัพโหลดและอัพเดตข้อมูล
+            $upload_location = 'image/profile/';
+            $full_path = $upload_location.$img_name;
+
+            
+            //อัพเดตข้อมูล
+            employee::find($emp_id)->update([
+
+                 'profile'=> $full_path, 
+                 'emp_fristname'=> $request->emp_fristname, 
+                 'emp_lastname'=> $request->emp_lastname, 
+                 'sex'=> $request->sex, 
+                 'Address'=> $request->Address, 
+                 'Email'=> $request->email, 
+                 'tell'=> $request->tell, 
+                 'Useranme'=> $request->useranme, 
+                 'Password'=> md5($request->password), 
+                  
+            ]);
+
+            //ลบภาพเก่าและอัพภาพใหม่แทนที่
+            $old_image = $request->old_image;
+            unlink($old_image);
+            $image->move($upload_location,$img_name);
+
+            return redirect()->route('showEmployee')->with('success',"อัพเดตข้อมูลเรียบร้อย");
+
+        }else{
+            //อัพเดตข้อมูลอย่างเดียว
+            employee::find($emp_id)->update([
+                'emp_fristname'=> $request->emp_fristname, 
+                'emp_lastname'=> $request->emp_lastname, 
+                'sex'=> $request->sex, 
+                'Address'=> $request->Address, 
+                'Email'=> $request->email, 
+                'tell'=> $request->tell, 
+                'Useranme'=> $request->useranme, 
+                'Password'=> md5($request->password),
+                
+               
+            ]);
+            return redirect()->route('showEmployee')->with('success',"อัพเดตข้อมูลเรียบร้อย");
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

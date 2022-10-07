@@ -20,7 +20,7 @@
                 </div>
             @endif
            
-            <form action="{{ route('addStore') }}" method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{ route('addStore') }}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     <div class="col-md-4 mt-1 ">
@@ -68,7 +68,8 @@
                     <div class="col-md-4">
                         <div class="form-group my-3">
                             <label>ที่อยู่</label>
-                            <input type="text" name="Address" class="form-control mt-1" placeholder=" Address">
+                            
+                            <textarea  class="form-control" name="Address"  style="height: 60px"   ></textarea> 
                             @error('Address')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror

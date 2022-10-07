@@ -7,15 +7,16 @@
 
 
 <main class="col bg-faded py-4 flex-grow-1">
-    <div class="container mt-5">
+    <div class="row mt-5"></div>
+    <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>ข้อมูลค่าจ้างพนักงาน</h2>
+                <h2>เพิ่มข้อมูลค่าจ้างพนักงาน</h2>
             </div>
            
            
            
-            <form action="{{ route('salaryStore')}}" method="POST" enctype="multipart/form-data" class=" p-2">
+            <form action="{{ route('salaryStore')}}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     
@@ -78,11 +79,11 @@
                     </div>
                     
                    
-                    <div class="col-md-4 ml-5 mr-5 form-inline">
-                        <div class="">
+                    <div class="col-md-4 ml-5 mr-5 form-inline ml-3">
+                        <div class="m-lg-2">
                             <button type="submit" class="mt-3 btn btn-primary">Submit</button></div>
                         <div class="">
-                            <a href="{{ route('salary') }}" class="btn btn-danger ml-4 mt-3 ">ย้อนกลับ</a>
+                            <a href="{{ route('salary') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
                         </div>
                     </div>
                   
