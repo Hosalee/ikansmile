@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salaries', function (Blueprint $table) {
-            $table->id('salary_id');
-            $table->date('date');
-            $table->integer('amount');
-            $table->string('status');
-
-        });
-        Schema::create('salaries', function (Blueprint $table) { 
-            $table->foreignId('emp_id')->constrained();
+        Schema::create('details_recipes', function (Blueprint $table) {
+            $table->id();
+            $table->string('RD_id');
+            $table->string('Quantity');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('details_recipes');
     }
 };

@@ -10,11 +10,11 @@
   <div class="container mt-3">
     <div class="row">
         <div class="col-lg-12   text-center ">
-            <h2 >ข้อมูลวัตถุดิบ</h2>
+            <h2 >ข้อมูลสูตรอาหารปลา</h2>
         </div>
       
         <div class="pl-0">
-        <a href="{{route('addRawMaterial')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลวัตถุดิบ</a>
+        <a href="{{route('addRecipes')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มข้อมูลสูตรอาหารปลา</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -26,12 +26,11 @@
         <table class="table table-responsive-lg  mt-3 text-center">
           <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
               <th width="30 px">#</th>
-              <th width="160 px">รูปวัตถุดิบ</th>
-              <th width="70 px">ชื่อวัตถุดิบ</th>
-              <th width="150 px">รายละเอียด</th>
+              <th width="160 px">รูปสูตร</th>
+              <th width="70 px">ชื่อ</th>
               <th width="150 px">Action</th>
           </tr>
-          @foreach($RM as $row)
+          {{-- @foreach($RM as $row)
           <tr style="background-color: #ffffff">
                  <td  style="width: 2rem;">{{$RM->firstItem()+$loop->index }}</td>
                   <td  style="width: 8rem;"><img src="{{asset($row->picture)}}" alt="" width="150px" height="100px"></td>
@@ -47,9 +46,9 @@
                         </a> 
                   </td>
               </tr>
-          @endforeach 
+          @endforeach  --}}
       </table>
-     {!! $RM->links('pagination::bootstrap-5') !!} 
+     {{-- {!! $RM->links('pagination::bootstrap-5') !!}  --}}
 
 
     </div>

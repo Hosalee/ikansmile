@@ -135,8 +135,8 @@ background-color: #ffffff;
                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                      <a href="#">ข้อมูลสูตรอาหาร</a>
-                      <a href="rawMaterial">ข้อมูลวัตถุดิบ</a>
+                      <a href="{{route('Recipes')}}">ข้อมูลสูตรอาหาร</a>
+                      <a href="{{route('rawMaterial')}}">ข้อมูลวัตถุดิบ</a>
                      
                     </div>
                     <button class="dropdown-btn"><i class=""></i>ข้อมูลการสั่งซื้อ

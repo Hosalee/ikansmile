@@ -28,7 +28,7 @@
 
         <table class="table table-responsive-lg  mt-3 text-center">
           <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
-               <th>#</th>  
+               {{-- <th>#</th>   --}}
               <th>วันที่จ่าย</th>
               <th width="150px">ชื่อ</th> 
               {{-- <th>วันที่จ่าย</th> --}}
@@ -40,7 +40,7 @@
           </tr>
      @foreach($Salary as $row)
      <tr style="background-color: #ffffff">
-                   <td>{{$Salary->firstItem()+$loop->index }}</td> 
+                   {{-- <td>{{$Salary->firstItem()+$loop->index }}</td>  --}}
                   <td>{{  $row->date }}</td>
                   <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>
                   {{-- <td>{{  $row->date }}</td> --}}

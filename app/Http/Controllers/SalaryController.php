@@ -18,7 +18,7 @@ class SalaryController extends Controller
     {
         //
         $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
-        ->select('salaries.*','employees.emp_fristname','employees.emp_lastname','employees.profile')->paginate(5);
+        ->select('salaries.*','employees.emp_fristname','employees.emp_lastname','employees.profile')->orderBy('date','DESC')->paginate(5);
 
         return view('admin.salary.index',compact('Salary'));
     }

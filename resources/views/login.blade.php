@@ -139,7 +139,7 @@ input.user-username, input.user-password {
     padding: 5px 5px;
     color: rgb(255, 255, 255);
     outline: none;
-   
+    margin-left: 0.8rem;
 }
 
 </style>
