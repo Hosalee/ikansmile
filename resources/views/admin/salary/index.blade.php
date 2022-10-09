@@ -14,7 +14,7 @@
         </div>
       
         <div class="pl-0 mt-4 ">
-        <a href="{{route('addSalary')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
+        <a href="{{--route('addSalary')--}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
         </div>
         <div class=""></div>
         
@@ -28,7 +28,7 @@
 
         <table class="table table-responsive-lg  mt-3 text-center">
           <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
-               {{-- <th>#</th>   --}}
+               <th>#</th>  
               <th>วันที่จ่าย</th>
               <th width="150px">ชื่อ</th> 
               {{-- <th>วันที่จ่าย</th> --}}
@@ -39,15 +39,15 @@
               <th width="150px">Action</th>
           </tr>
      @foreach($Salary as $row)
-     <tr style="background-color: #ffffff">
-                   {{-- <td>{{$Salary->firstItem()+$loop->index }}</td>  --}}
-                  <td>{{  $row->date }}</td>
-                  <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>
-                  {{-- <td>{{  $row->date }}</td> --}}
+     <tr style="background-color: #ffffff"> 
+                   <td>{{$Salary->firstItem()+$loop->index }}</td>  
+                    <td>{{  $row->date }}</td>
+                   <td>{{ $row->emp_fristname}} {{ $row->emp_lastname}}</td>
+                 
                    <td>{{  $row->amount}}</td>
                     <td>{{  $row->number }}</td>
                      <td >{{  $row->totalAmount}}</td>
-                       <td ><a class="text-white btn btn-success ">{{  $row->status}}</a></td>
+                       <td ><a class="text-white btn btn-success ">{{  $row->status}}</a></td> 
                    
                        
                        
@@ -67,7 +67,7 @@
                    
                   </td>
               </tr>
-          @endforeach 
+          @endforeach  
       </table>
       {{-- {!! $Emp->links('pagination::bootstrap-5') !!}   --}}
 

@@ -69,6 +69,8 @@ Route::get('/customer/deleteCustomer/{id}',[CustomerController::class,'destroy']
 //แอตมิน//:สูตรอาหาร
 Route::get('/Recipes',[RecipesController::class,'index'])->name('Recipes');
 Route::get('/Recipes/addRecipes',[RecipesController::class,'create'])->name('addRecipes');
+Route::post('/Recipes/storeRecipes',[RecipesController::class,'store'])->name('storeRecipes');
+Route::get('/Recipes/showRecipes/{id}',[RecipesController::class,'show'])->name('showRecipes');
 //แอตมิน//:วัตถุดิบ
 Route::get('/rawMaterial',[RawMaterialController::class,'index'])->name('rawMaterial');
 Route::get('/rawMaterial/addRawMaterial',[RawMaterialController::class,'create'])->name('addRawMaterial');

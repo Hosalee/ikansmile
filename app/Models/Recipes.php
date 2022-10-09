@@ -12,7 +12,8 @@ class Recipes extends Model
        
         'Recipes_id',
        'Recipes_name',
-       'picture'
+       'explain'
     ];
     protected $primaryKey = 'Recipes_id';
+   
 }

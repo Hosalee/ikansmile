@@ -93,14 +93,12 @@ class SalaryController extends Controller
         //
         $id = session()->get('user_id');
         
-        // $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')
-        // ->select('salaries.*','employees.emp_fristname','employees.emp_lastname','employees.profile')->paginate(5);
-        $Salary = DB::table('salaries')->where('emp_id', $id)->orderBy('date','DESC')->get();
-        $name = DB::table('employees')->where('emp_id', $id)->value('emp_fristname');
-        // ->where('emp_id', $id)
-      
-         return view('employee.salary.index',compact('Salary','name'));
-    //  dd($name);
+       
+        $Salary = DB::table('salaries')->join('employees','salaries.emp_id','employees.emp_id')->where('employees.emp_id', $id)->select('salaries.*','employees.emp_fristname','employees.emp_lastname')->orderBy('salaries.date','DESC')->get();
+        
+        // dd($Salary);
+         return view('employee.salary.index',compact('Salary'));
+    //  dd($Salary);
     }
 
     /**
