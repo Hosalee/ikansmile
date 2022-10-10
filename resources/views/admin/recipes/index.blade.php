@@ -40,7 +40,7 @@
                   
                   <td>
                     <a href="{{route('showRecipes',$row->Recipes_id)}}" class="btn btn-info  bi bi-eye"></a>
-                   <a href="{{--url('/rawMaterial/editRawMaterial/'.$row->Raw_Material_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
+                   <a href="{{route('editRecipes',$row->Recipes_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
                     <a href="{{--route('deleteRawMaterial',$row->Raw_Material_id)--}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">

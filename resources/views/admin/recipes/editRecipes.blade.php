@@ -15,28 +15,33 @@
             </div>
            
            
-           
+            <form action="{{route('updateRecipes',$recipes[0]->Recipes_id)}}" method="POST" enctype="multipart/form-data" class=" p-5">
+                @csrf
                 <div class="row">
                     <div class="row "></div>
                     
-                    <div class="col-5 ml-3 mt-4">
-                            <strong>ชื่อสูตรอาหาร   :  </strong><label>  {{ $recipes[0]->Recipes_name}}</label>
+                    <div class="col-4 ml-3">
+                        <label>ชื่อสูตรอาหาร</label>
+                        <input type="text" name="name" class="form-control" placeholder="Name" value=" {{ $recipes[0]->Recipes_name}}">
+                            
                     </div>
-                    <div class="col-5 mt-4">
-                        <strong>รายละเอียด    :  </strong><label>  {{ $recipes[0]->explain}}</label>
+                    <div class="col-5">
+                        <label>รายละเอียด</label>
+                            <textarea  class="form-control" name="explain"  style="height: 100 px"   >{{ $recipes[0]->explain}}</textarea> 
+                        
                 </div>
             </div>
                    
                     
                    
                     <hr  >
-                    <div class="col-md-12 mt-3 ml-5 ">
+                    <div class="col-md-12 mt-3 ml-1 ">
                        
                             <h4>รายละเอียดสูตรอาหาร</h4>
                      
                     </div>
                    
-                    <div class="col-md-10 mt-2  ml-5">
+                    <div class="col-md-12 mt-2 ">
                         
                         <table class="table table-responsive-lg text-center " id="dynamicAddRemove">
                           
@@ -45,15 +50,26 @@
                                 <th width="100 px">วัตถุดิบ</th>
                                   <th width="100 px">ปริมาณที่ต้องใช้ (กิโลกรัม,ลิตร)</th>
                                   
+                                  <td width="100 px"><button type="button" name="add" id="dynamic-ar" value=" {{$i++}}" class="btn btn-primary">Add Product</button></td>
+                                  
                               </tr>
                             </thead>
                             @foreach($recipes as $row) 
                               <tr>
                                
                                
-                               <td>{{$i++}}</td>
-                               <td >{{$row->Raw_Material_name}}</td>
-                               <td>{{$row->Quantity }}</td>
+                               <td></td>
+                               <td>
+                                <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="RM_id[]" placeholder="Enter subject">
+                                    <option selected value="{{$row->Raw_Material_id}}" >{{$row->Raw_Material_name}}</option>
+                                    @foreach($RM as $r)
+                                    <option value="{{$r->Raw_Material_id}}">{{$r->Raw_Material_name}}</option>
+                                    @endforeach
+                                </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="Quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" value="{{$row->Quantity}}" /></td>
+                                 <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td>
                                   {{-- <td> --}}
                                     
                                   {{-- <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="IVR_PID[]" placeholder="Enter subject">
@@ -74,13 +90,14 @@
                     <div class="col-md-4 form-inline ml-3">
                         
                         <div class="">
+                                <button type="submit" class="mt-3 ml-3 btn btn-warning">Update</button>
                             <a href="{{ route('Recipes') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
                         </div>
                     </div>
 
                   
                 </div>
-         
+            </form>
         </div>
     </div>
        
@@ -94,8 +111,8 @@
     
     $("#dynamic-ar").click(function () {
        
-        $("#dynamicAddRemove").append(  
-            /*  */);
+          
+            $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="RM_id[]" ><option >@foreach($RM as $row) <option  value="{{$row->Raw_Material_id}}">{{$row->Raw_Material_name}}</option>@endforeach </option></select></td>  <td><input type="text" name="Quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
     });
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();

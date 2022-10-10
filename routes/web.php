@@ -71,6 +71,8 @@ Route::get('/Recipes',[RecipesController::class,'index'])->name('Recipes');
 Route::get('/Recipes/addRecipes',[RecipesController::class,'create'])->name('addRecipes');
 Route::post('/Recipes/storeRecipes',[RecipesController::class,'store'])->name('storeRecipes');
 Route::get('/Recipes/showRecipes/{id}',[RecipesController::class,'show'])->name('showRecipes');
+Route::get('/Recipes/editRecipes/{id}',[RecipesController::class,'edit'])->name('editRecipes');
+Route::post('/Recipes/updateRecipes/{id}',[RecipesController::class,'update'])->name('updateRecipes');
 //แอตมิน//:วัตถุดิบ
 Route::get('/rawMaterial',[RawMaterialController::class,'index'])->name('rawMaterial');
 Route::get('/rawMaterial/addRawMaterial',[RawMaterialController::class,'create'])->name('addRawMaterial');

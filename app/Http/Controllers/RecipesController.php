@@ -113,9 +113,19 @@ class RecipesController extends Controller
      * @param  \App\Models\Recipes  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipes $recipes)
+    public function edit( $id)
     {
         //
+        $recipes = DB::table('recipes')->join('details_recipes','recipes.Recipes_id','details_recipes.Recipes_id')
+        ->join('raw_materials','raw_materials.Raw_Material_id','details_recipes.Raw_Material_id')->where('details_recipes.Recipes_id',$id )
+        ->select('recipes.Recipes_name','recipes.explain','details_recipes.*','raw_materials.Raw_Material_name')
+        ->get();
+        $i=1;
+        $RM =RawMaterial::all();
+       
+        return view('admin.recipes.editRecipes',compact('recipes','i','RM'));
+
+
     }
 
     /**
@@ -125,9 +135,26 @@ class RecipesController extends Controller
      * @param  \App\Models\Recipes  $recipes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipes $recipes)
+    public function update(Request $request,$id)
     {
         //
+        //  $request1= $request->RM_id;
+        //  dd($request1);
+        $D=DB::table('details_recipes')->where('Recipes_id',$id )->select('id')->get();
+        //  dd($D);
+        // dd($request);
+        // dd($D);
+        $P = count($request->RM_id);
+            for($i=0;$i<$P;$i++){
+                DetailsRecipe::where('id',$D[$i]->id)->update([
+                    'Raw_Material_id'=> $request->RM_id[$i],
+                    'Quantity' => $request->Quantity[$i],
+                    
+                ]);
+                // dd($request->RM_id[$i]);
+            }
+            return redirect()->back();
+
     }
 
     /**
