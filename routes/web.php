@@ -7,6 +7,8 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\fishController;
+use App\Http\Controllers\FishStockController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\SalaryController;
@@ -80,6 +82,12 @@ Route::post('/rawMaterial/storeRawMaterial',[RawMaterialController::class,'store
 Route::get('/rawMaterial/editRawMaterial/{id}',[RawMaterialController::class,'edit'])->name('editRawMaterial');
 Route::post('/rawMaterial/updateRawMaterial/{id}',[RawMaterialController::class,'update'])->name('updateRawMaterial');
 Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'destroy'])->name('deleteRawMaterial');
+//แอตมิน//:การสั่งซื้อ
+Route::get('/orderfish',[OrderController::class,'index'])->name('orderfish');
+Route::get('/addOrderfish',[OrderController::class,'create'])->name('addOrderfish');
+Route::post('/storeOrderfish',[OrderController::class,'store'])->name('storeOrderfish');
+//แอตมิน//:สต๊อกลูกปลา
+Route::get('/addFishStock/{id}',[FishStockController::class,'store'])->name('addFishStock');
 
 
 

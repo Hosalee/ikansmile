@@ -153,7 +153,7 @@ class RecipesController extends Controller
                 ]);
                 // dd($request->RM_id[$i]);
             }
-            return redirect()->back();
+            return redirect()->route('Recipes')->with('success',"แก้ไขข้อมูลสูตรอาหารเรียบร้อย");
 
     }
 

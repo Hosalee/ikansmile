@@ -32,7 +32,7 @@
               <th width="200 px">ที่อยู่</th>
               <th width="50 px">อีเมล</th>
               <th width="50 px">เบอร์โทร</th>
-              <th width="50 px">ชื่อผู้ใช้</th>
+              <th width="70 px">ชื่อผู้ใช้</th>
               <th width="100px">Action</th>
           </tr>
      @foreach($Emp as $row)

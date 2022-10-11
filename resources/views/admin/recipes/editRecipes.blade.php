@@ -49,8 +49,8 @@
                                 <th width="30 px">#</th>
                                 <th width="100 px">วัตถุดิบ</th>
                                   <th width="100 px">ปริมาณที่ต้องใช้ (กิโลกรัม,ลิตร)</th>
-                                  
-                                  <td width="100 px"><button type="button" name="add" id="dynamic-ar" value=" {{$i++}}" class="btn btn-primary">Add Product</button></td>
+                                  <th width="100 px"></th>
+                                  {{-- <td width="100 px"><button type="button" name="add" id="dynamic-ar" value=" {{$i++}}" class="btn btn-primary">Add Product</button></td> --}}
                                   
                               </tr>
                             </thead>

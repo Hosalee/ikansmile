@@ -14,7 +14,7 @@
         </div>
       
         <div class="pl-0 mt-4 ">
-        <a href="{{--route('addSalary')--}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
+        <a href="{{route('addSalary')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> จ่ายค่าจ้างพนักงาน</a>
         </div>
         <div class=""></div>
         

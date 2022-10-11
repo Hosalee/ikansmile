@@ -143,7 +143,7 @@ background-color: #ffffff;
                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                      <a href="#">ข้อมูลการสั่งซื้อปลา</a>
+                      <a href="{{route('orderfish')}}">ข้อมูลการสั่งซื้อปลา</a>
                       <a href="#">ข้อมูลการสั่งวัตถุดิบ</a>
                       
                     </div>
@@ -167,6 +167,7 @@ background-color: #ffffff;
                           <i class="fa-sharp fa-solid fa-caret-down"></i>
                           </button>
                           <div class="dropdown-container">
+                            <a href="#">ข้อมูลสต๊อกลูกปลา</a>
                             <a href="#">ข้อมูลสต๊อกวัตถุดิบ</a>
                             <a href="#">ข้อมูลสต๊อกอาหารปลา</a>
                             
