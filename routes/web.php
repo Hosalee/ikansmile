@@ -87,7 +87,9 @@ Route::get('/orderfish',[OrderController::class,'index'])->name('orderfish');
 Route::get('/addOrderfish',[OrderController::class,'create'])->name('addOrderfish');
 Route::post('/storeOrderfish',[OrderController::class,'store'])->name('storeOrderfish');
 //แอตมิน//:สต๊อกลูกปลา
+Route::get('/FishStock',[FishStockController::class,'index'])->name('FishStock');
 Route::get('/addFishStock/{id}',[FishStockController::class,'store'])->name('addFishStock');
+Route::get('/deleteFishStock/{id}',[FishStockController::class,'destroy'])->name('deleteFishStock');
 
 
 

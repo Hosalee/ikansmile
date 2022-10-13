@@ -23,7 +23,7 @@ class OrderController extends Controller
         //
         $orderfish = DB::table('orders')->join('employees','orders.emp_id','employees.emp_id')
         ->join('suppliers','orders.supplier_id','suppliers.supplier_id')
-        ->select('orders.*','employees.emp_fristname','employees.emp_lastname','suppliers.name')
+        ->select('orders.*','employees.emp_fristname','employees.emp_lastname','suppliers.name')->orderBy('orders_id','DESC')
         ->get();
        
         // $orderfish =order::all();
