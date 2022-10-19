@@ -86,6 +86,7 @@ Route::get('/rawMaterial/deleteRawMaterial/{id}',[RawMaterialController::class,'
 Route::get('/orderfish',[OrderController::class,'index'])->name('orderfish');
 Route::get('/addOrderfish',[OrderController::class,'create'])->name('addOrderfish');
 Route::post('/storeOrderfish',[OrderController::class,'store'])->name('storeOrderfish');
+Route::get('/showOrderfish/{id}',[OrderController::class,'show'])->name('showOrderfish');
 //แอตมิน//:สต๊อกลูกปลา
 Route::get('/FishStock',[FishStockController::class,'index'])->name('FishStock');
 Route::get('/addFishStock/{id}',[FishStockController::class,'store'])->name('addFishStock');

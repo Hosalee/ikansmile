@@ -16,7 +16,7 @@ class LoginController extends Controller
             
             $r->session()->put('user_id',$session[0]->emp_id);
             $r->session()->put('user_name',$session[0]->emp_fristname);
-            $r->session()->put('position',$session[0]->position);
+            $r->session()->put('status',$session[0]->status);
             // dd($session[0]->position);
             // if($session[0]->position =='Admin'){
             //     return view('admin.dashboard');
@@ -38,11 +38,11 @@ class LoginController extends Controller
         if($r->session()->get('user_id') == ""){
             return redirect()->route('login');
             }else{
-                if($r->session()->get('position') == "Admin"){
+                if($r->session()->get('status') == "Admin"){
                     $username=$r->session()->get('user_name');
                     $capsule =array('username'=>$username);
                     return view('admin.dashboard')->with($capsule);
-                    }elseif($r->session()->get('position') =='employee'){
+                    }elseif($r->session()->get('status') =='employee'){
                         $username=$r->session()->get('user_name');
                         $capsule =array('username'=>$username);
                         return view('employee.home')->with($capsule);
@@ -58,7 +58,7 @@ class LoginController extends Controller
     public function logout(Request $r){
         $r->session()->forget('user_id');
         $r->session()->forget('user_name');
-        $r->session()->forget('position');
+        $r->session()->forget('status');
         
         return redirect()->route('login');
 

@@ -30,6 +30,7 @@
               <th width="100 px">ชื่อปลา</th>
               <th width="100 px">พันธ์ุปลา</th>
               <th >ลักษณะปลา</th>
+              <th  width="150 px">จำนวนลูกปลาในสต็อก (ตัว)</th>
               <th width="150 px">Action</th>
           </tr>
          @foreach($Fish as $row)
@@ -41,10 +42,8 @@
                   <td class="text-wrap text-left" style="width: 18rem;" > 
                     {{ Str::limit( $row->fish_appearance,150)}}
                  </td>
+                 <td  width="50 px">{{$row->quantity}}</td>
                   <td>
-                 
-
-
                    <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
                     <a href="{{route('Deletefish',$row->fish_id)}}" 
                         

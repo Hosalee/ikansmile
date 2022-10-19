@@ -23,7 +23,7 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $Emp = employee::where('position','employee')->paginate(5);
+        $Emp = employee::where('status','employee')->paginate(5);
         return view('admin.employee.index',compact('Emp'));
     }
 
@@ -56,6 +56,8 @@ class EmployeeController extends Controller
             'Address'=>'required:employee',
             'email'=>'required:employee',
             'tell'=>'required:employee',
+            'position'=>'required:employee',
+
           
             'username'=>'required:employee',
             'password'=>'required:employee',
@@ -69,6 +71,7 @@ class EmployeeController extends Controller
             'Address.required'=>"กรุณาระบุที่อยู่",
             'email.required'=>"กรุณาระบุอีเมล",
             'tell.required'=>"กรุณาระบุเบอร์โทร์",
+            'position.required'=>"กรุณาระบุตำแหน่งงาน",
            
             'username.required'=>"กรุณาระบุชื่อผู้ใช้",
             'password.required'=>"กรุณาใส่รหัสผ่าน",
@@ -100,7 +103,8 @@ class EmployeeController extends Controller
         'tell'=> $request->tell,
         'Username'=> $request->username,
         'Password'=>  md5($request->password),
-        'position'=>'employee'
+        'status'=>'employee',
+        'position'=> $request->position,
       
 
 
@@ -195,6 +199,7 @@ class EmployeeController extends Controller
                  'Address'=> $request->Address, 
                  'Email'=> $request->email, 
                  'tell'=> $request->tell, 
+                 'position'=> $request->position,
                  'Useranme'=> $request->useranme, 
                  'Password'=> md5($request->password), 
                   
@@ -216,6 +221,7 @@ class EmployeeController extends Controller
                 'Address'=> $request->Address, 
                 'Email'=> $request->email, 
                 'tell'=> $request->tell, 
+                'position'=> $request->position,
                 'Useranme'=> $request->useranme, 
                 'Password'=> md5($request->password),
                 

@@ -128,9 +128,19 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show( $id)
     {
-        //
+        // 
+        $orderfish = DB::table('orders')->join('employees','orders.emp_id','employees.emp_id')->where('orders.orders_id',$id)
+        ->join('suppliers','orders.supplier_id','suppliers.supplier_id')
+        ->select('orders.*','employees.emp_fristname','employees.emp_lastname','suppliers.name')
+        ->get();
+        $orderfish_details = DB::table('orderfish_details')->join('fish','fish.fish_id','orderfish_details.fish_id')->where('orderfish_details.order_id',$id)
+        ->select('orderfish_details.*','fish.name',)
+        ->get();
+        //  $orderfish_details = orderfish_details::where('order_id',$id)->select()->get();
+         $i=1;
+        return view('admin.order.showOrder',compact('orderfish_details','orderfish','i'));
     }
 
     /**

@@ -56,16 +56,24 @@ class FishStockController extends Controller
        $count =count($F);
         //   dd($count);
        
-        
+        $num=0;
+        $num2=0;
          for($i=0;$i<$count;$i++){
             $fishStock = new fishStock();
             $fishStock -> orderfish_details_id = $F[$i]->orderfish_details_id; 
-            $fishStock -> quantity = $F[$i]->fish_id;
+            // $fishStock -> fish_id = $F[$i]->fish_id;
             $fishStock -> size = $F[$i]->size;
             $fishStock -> quantity = $F[$i]->quantity;
             $fishStock -> date_import = $date; 
             $fishStock -> save();
-         
+            // dd($F[$i]->fish_id);
+            
+            $num=fish::where('fish_id',$F[$i]->fish_id)->value('quantity');
+            $num2=intval($num+$F[$i]->quantity);
+            // dd($num2);
+            // fish::find($F[$i]->fish_id)->update(["quantity"=>$num2 ]);
+            fish::where('fish_id',$F[$i]->fish_id) ->update(['quantity' =>$num2]);
+            
 
             
         }

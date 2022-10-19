@@ -59,7 +59,7 @@
                     @if($row->status=='กำลังจัดส่ง')
                     <a href="{{route('addFishStock',$row->orders_id)}}" class="btn btn-success  bi bi-box-seam"   onclick="return confirm('คุณต้องการยืนยันคำสั่งซื้อและเพิ่มสินค้าไปยังสต๊อก ?')"></a>
                     @endif
-                    <a href="{{--route('showRecipes',$row->Recipes_id)--}}" class="btn btn-info  bi bi-eye-fill"></a>
+                    <a href="{{route('showOrderfish',$row->orders_id)}}" class="btn btn-info  bi bi-eye-fill"></a>
                    <a href="{{--route('editRecipes',$row->Recipes_id)--}}" class="btn btn-warning bi bi-pencil-square"></a>
                     {{-- <a href="{{route('deleteRawMaterial',$row->Raw_Material_id)}}" 
                         class="btn btn-danger bi bi-trash-fill"

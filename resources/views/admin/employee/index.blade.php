@@ -27,12 +27,13 @@
             <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
               <th width="50 px">#</th>
               <th width="50 px">รูปโปรไฟล์</th>
-              <th width="100 px">ชื่อ-สกุล</th>
+              <th width="120 px">ชื่อ-สกุล</th>
               <th width="50 px">เพศ</th>
               <th width="200 px">ที่อยู่</th>
               <th width="50 px">อีเมล</th>
               <th width="50 px">เบอร์โทร</th>
               <th width="70 px">ชื่อผู้ใช้</th>
+              <th width="120 px">ตำแหน่ง</th>
               <th width="100px">Action</th>
           </tr>
      @foreach($Emp as $row)
@@ -45,6 +46,7 @@
                     <td>{{  $row->Email }}</td>
                      <td>{{  $row->tell}}</td>
                       <td>{{  $row->Username}}</td>
+                      <td>{{  $row->position}}</td>
                        
                        
 

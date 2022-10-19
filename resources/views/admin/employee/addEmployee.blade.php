@@ -14,11 +14,11 @@
                 <h2>เพิ่มข้อมูลพนักงาน</h2>
             </div>
            
-            @if (session('status'))
+            {{-- @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
-            @endif
+            @endif --}}
            
             <form action="{{ route('addStore') }}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
@@ -56,10 +56,24 @@
                             <label>เพศ</label>
                             <select class="form-select"  name="sex" id="autoSizingSelect" >
                               <option selected></option>
-                              <option value="Men">ชาย</option>
-                              <option value="Women">หญิง</option>
+                              <option value="ชาย">ชาย</option>
+                              <option value="หญิง">หญิง</option>
                             </select>
                             @error('sex')
+                                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-1">
+                        <div class="form-group my-3">
+                            <label>ตำแหน่ง</label>
+                            <select class="form-select"  name="position" id="autoSizingSelect" >
+                              <option selected></option>
+                              <option value="พนักงานเลี้ยงปลา">พนักงานเลี้ยงปลา</option>
+                              <option value="พนักงานขายปลา">พนักงานขายปลา</option>
+                              <option value="พนักงานผลิตอาหาร">พนักงานผลิตอาหาร</option>
+                            </select>
+                            @error('position')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror
                         </div>
