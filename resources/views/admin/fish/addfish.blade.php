@@ -75,6 +75,7 @@
                         <div class="">
                             <a href="{{ route('fish') }}" class="btn btn-danger ml-4 mt-3 px-4">Back</a>
                         </div>
+                        
                     </div>
                   
                 </div>

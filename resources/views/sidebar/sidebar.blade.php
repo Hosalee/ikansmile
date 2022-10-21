@@ -151,7 +151,7 @@ background-color: #ffffff;
                       <i class="fa-sharp fa-solid fa-caret-down"></i>
                       </button>
                       <div class="dropdown-container">
-                        <a href="#">ข้อมูลการเลี้ยงปลา</a>
+                        <a href="{{route('farming')}}">ข้อมูลการเลี้ยงปลา</a>
                         <a href="#">ข้อมูลการจับปลา</a>
                         
                       </div>

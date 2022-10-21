@@ -6,6 +6,7 @@ use App\Http\Controllers\CageController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FarmingController;
 use App\Http\Controllers\fishController;
 use App\Http\Controllers\FishStockController;
 use App\Http\Controllers\OrderController;
@@ -91,7 +92,8 @@ Route::get('/showOrderfish/{id}',[OrderController::class,'show'])->name('showOrd
 Route::get('/FishStock',[FishStockController::class,'index'])->name('FishStock');
 Route::get('/addFishStock/{id}',[FishStockController::class,'store'])->name('addFishStock');
 Route::get('/deleteFishStock/{id}',[FishStockController::class,'destroy'])->name('deleteFishStock');
-
+//แอตมิน//:การเลี้ยง
+Route::get('/farming',[FarmingController::class,'index'])->name('farming');
 
 
 
