@@ -62,7 +62,7 @@
                        <div class="col-md-4">
                         <div class="form-group my-3">
                             <label>ความจุของกระชัง(ปลากี่ตัว)</label>
-                            <input type="text" name="capicity" class="form-control mt-1" placeholder=" capicity">
+                            <input type="number" name="capicity" class="form-control mt-1" placeholder=" capicity">
                             @error('capicity')
                                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                             @enderror

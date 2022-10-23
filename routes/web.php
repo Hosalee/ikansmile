@@ -94,6 +94,7 @@ Route::get('/addFishStock/{id}',[FishStockController::class,'store'])->name('add
 Route::get('/deleteFishStock/{id}',[FishStockController::class,'destroy'])->name('deleteFishStock');
 //แอตมิน//:การเลี้ยง
 Route::get('/farming',[FarmingController::class,'index'])->name('farming');
+Route::post('/farmingStore',[FarmingController::class,'store'])->name('farmingStore');
 
 
 

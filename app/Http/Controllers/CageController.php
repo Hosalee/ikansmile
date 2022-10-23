@@ -61,7 +61,7 @@ class CageController extends Controller
             
         ]);
       
-
+    
       //เพิ่มข้อมูลเข้า database
         cage::insert([
        'cage_name' => $request->cage_name,    

@@ -6,6 +6,7 @@ use App\Models\cage;
 use App\Models\farming;
 use App\Models\fish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FarmingController extends Controller
 {
@@ -17,9 +18,12 @@ class FarmingController extends Controller
     public function index()
     {
         //
-        $fish=fish::paginate(5);
+        $fish=fish::paginate(10);
         $cage=cage::where('status','ว่าง')->paginate(5);
-        return view('admin.farming.index',compact('fish','cage'));
+        $Emp = DB::table('employees')->where('position','พนักงานเลี้ยงปลา')->get();
+        $farming =farming::all();
+        $i=1;
+        return view('admin.farming.index',compact('fish','cage','Emp','farming','i'));
     }
 
     /**
@@ -41,6 +45,34 @@ class FarmingController extends Controller
     public function store(Request $request)
     {
         //
+        $cage=cage::where('cage_id',$request->cage_id)->value('cage_name');
+        $n=intval($request->quantity) ;
+        $max =cage::where('cage_id',$request->cage_id)->value('capicity');
+        if($n > $max){
+            return redirect()->back()->with('error'," เกินความจุของกระชัง  $cage รองรับความจุปลาแค่ $max ตัว กรุณาลองอีกครั้ง");
+            
+        }else{
+        $dateimport=date('Ymd');
+        $fishSize=$request->fishSize.'Inch';
+        $farming = new farming();
+        $farming->fish_id = $request->fish_id;
+        $farming->cage_id = $request->cage_id;
+        $farming->emp_id = $request->emp_id;
+        $farming->fishSize = $fishSize;
+        $farming->fish_quantity = $request->quantity;
+        $farming->date_import = $dateimport;
+        $farming->status = 'ระยะที1';
+        $farming->save();
+
+        $number=$request->quantity;
+        $sum=fish::where('fish_id',$request->fish_id )->value('quantity');
+        $quantity = ($sum-$number);
+        // echo $quantity;
+        cage::where('cage_id',$request->cage_id )->update([ 'status'=>'มีการเลี้ยง']);
+        fish::where('fish_id',$request->fish_id )->update([ 'quantity'=> $quantity]);
+
+        return redirect()->route('farming')->with('success',"บันทึกข้อมูลปลาเรียบร้อย");
+        }
     }
 
     /**
