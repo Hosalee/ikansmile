@@ -136,7 +136,7 @@ class OrderController extends Controller
         ->select('orders.*','employees.emp_fristname','employees.emp_lastname','suppliers.name')
         ->get();
         $orderfish_details = DB::table('orderfish_details')->join('fish','fish.fish_id','orderfish_details.fish_id')->where('orderfish_details.order_id',$id)
-        ->select('orderfish_details.*','fish.name',)
+        ->select('orderfish_details.*','fish.name','fish.species')
         ->get();
         //  $orderfish_details = orderfish_details::where('order_id',$id)->select()->get();
          $i=1;

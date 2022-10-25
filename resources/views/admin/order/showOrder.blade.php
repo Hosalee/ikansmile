@@ -61,7 +61,7 @@
                                
                                
                                <td>{{$i++}}</td>
-                               <td >{{$row->name}}</td>
+                               <td >{{$row->name}} {{$row->species}}</td>
                                <td>{{$row->size }}</td>
                                <td>{{$row->price }}</td>
                                <td>{{$row->quantity }}</td>

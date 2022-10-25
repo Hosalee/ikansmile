@@ -6,7 +6,7 @@
 
 <style>
 
-  .add{
+  /* .add{
     background: #353a3a;
     margin-left: -1.5rem;
     width: 100%;
@@ -37,7 +37,7 @@
     cursor: pointer;
 
     
-  }
+  } */
 </style>
 <main class="col  py-4 flex-grow-1" style="background-color: #fbfeff">
   <div class="row mt-5"></div>
@@ -64,38 +64,54 @@
         </div>
         @endif
 
-        <table class="table table-responsive-lg  mt-3 text-center">
-          <tr class=" text-white  " style="background: hsl(184, 57%, 38%)">
+        <table class="table table-responsive-lg  mt-3 text-center ">
+          <tr class=" text-white " style="background: hsl(184, 57%, 38%)">
               <th width="50 px">#</th>
-              <th width="100 px">ชื่อปลา</th>
+              <th width="150 px">ชื่อปลา</th>
               <th width="100 px">ชื่อกระชัง</th>
               <th width="100 px">ชื่อผู้รับผิดชอบ</th>
               <th width="100 px">วันที่ลง</th>
-              <th width="100 px">ขนาดปลาที่ลง(นิ้ว)</th>
+              <th width="120 px">ขนาดปลาที่ลง(นิ้ว)</th>
               <th width="100 px" >จำนวนปลาที่ลง</th>
               {{-- <th  width="100 px">จำนวนปลาที่เหลือ</th>
               <th  width="100 px">จำนวนปลาที่ตาย</th> --}}
               <th  width="100 px">สถานะ</th>
-              <th width="100 px">Action</th>
+              <th width="120 px">Action</th>
           </tr>
          @foreach($farming as $row)
-              <tr style="background-color: #ffffff">
+              <tr class="" style="background-color: #ffffff ">
                 <td>{{$i++}}</td>
-                  <td>{{ $row->fish_id }}</td>
-                  <td>{{  $row->cage_id }}</td>
-                  <td  >{{$row->emp_id}}</td>
+                  <td>{{ $row->name }}({{ $row->species }})</td>
+                  <td>{{  $row->cage_name}}</td>
+                  <td  >{{$row->emp_fristname}}{{$row->emp_lastname}}</td>
                   <td  >{{$row->date_import}}</td>
                   <td  >{{$row->fishSize}}</td>
                   <td  >{{$row->fish_quantity}}</td>
-                 <td  >{{$row->status}}</td>
-                  <td>
-                   <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    <a href="{{route('Deletefish',$row->fish_id)}}" 
-                        
+                 <td  ><a class="btn btn-primary text-white">{{$row->status}}</a></td>
+                  <td  class="text-end">
+                    <div class="">
+                      <a href="{{route('farmingShow',$row->farming_id)}}" class="btn btn-primary bi bi bi-eye"></a>
+                    <a href="{{--url('/fish/editfish/'.$row->farming_id)--}}" class="btn btn-warning bi bi-pencil-square"></a> 
+                      <a href="{{route('farmingDelete',$row->farming_id)}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a> 
                    
+                    </div><div class=" mt-2">
+                      {{-- <a href="route('farmingCreate',$row->farming_id)" id="edit" class="btn btn-Secondary bi bi-hourglass-split"  data-bs-toggle="modal" data-bs-target="#editModal" ></a> --}}
+                      <button type="button" value="{{$row->farming_id}}"  class="btn  addFishDead  bi bi-hourglass-split" style="background-color: #6cd7d7 ; color:#fbfeff"></button>
+                      <button type="button" value="{{$row->farming_id}}"  class="btn  addFood  bi  bi-egg-fill" style="background-color: #323f3f ; color:#fbfeff"></button>
+                      {{-- <a href="{{--url('/fish/editfish/'.$row->farming_id)}}" class="btn btn-Info bi-egg-fill"></a> --}}
+                      <a href="{{--url('/fish/editfish/'.$row->farming_id)--}}" class="btn btn-success  bi-hand-index-fill "></a>
+                    </div>
+                   {{-- <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a> --}}
+              
+                    {{-- <a href="{{route('Deletefish',$row->fish_id)}}" 
+                        
+                        class="btn btn-danger bi bi-trash-fill"
+                        onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
+                        </a> 
+                    --}}
                   </td>
               </tr>
           @endforeach
@@ -105,9 +121,97 @@
 
     </div>
   </div>
-  {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal">เพิ่มข้อมูลการเลี้ยง</button> --}}
+
+
+
+
+
+
+  {{--บันทึกข้อมูลการให้อาหาร --}}
+
+  <div class="modal fade" id="addFoodModal" tabindex="-2" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">บันทึกการให้อาหารปลา</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
   
-  <!-- Modal -->
+            <div class="modal-body">
+  
+               
+  
+               
+              <form action="{{ route('fishFoodUpdate') }}" method="POST" >
+                @csrf 
+               
+                <div class="form-group my-3 text-left">
+                  <Label>สูตรอาหาร</Label>
+                     <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="Recipes_id"  required placeholder="Enter subject"><option selected >โปรดระบุ</option>
+                         @foreach($recipes as $row) <option  value="{{$row->Recipes_id}}">{{$row->Recipes_name}} @endforeach </option></select>
+                   
+                 </div>
+                <div class="form-group mb-3">
+                    <label for="" >จำนวน</label>
+                    <input type="number"  name="amount"   required="กรุณาระบุจำนวนปลาตาย"  class="form-control">
+                    @error('dead_number')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="submit" name="farming_id" id="food_id"  class="btn btn-primary ">บันทึก</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+  {{----}}
+
+
+{{-- บันทึกข้อมูลปลาตาย--}}
+
+<div class="modal fade" id="addFishDeadModal" tabindex="-2" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editModalLabel">บันทึกข้อมูลปลาตาย</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+
+             
+            <form action="{{ route('fishDeadUpdate') }}" method="POST" >
+              @csrf 
+             
+              <div class="form-group mb-3">
+                  <label for="">จำนวนปลาที่ตาย</label>
+                  <input type="number"  name="dead_number"  required="กรุณาระบุจำนวนปลาตาย"  class="form-control">
+                  @error('dead_number')
+              <div class="alert alert-danger mt-1">{{ $message }}</div>
+              @enderror
+              </div>
+              
+             
+            
+              
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+              <button type="submit" name="farming_id" id="farming_id"  class="btn btn-primary ">บันทึก</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+
+  
+  
+  
+  <!-- add -->
   <div class="modal fade " id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content">
@@ -123,10 +227,11 @@
             @csrf 
           
           <div class="row">
+           
             <div class="col-5">
               <div class="form-group my-3 text-left">
              <Label>กระชัง</Label>
-                <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="cage_id" placeholder="Enter subject"><option selected >โปรดระบุ</option>
+                <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="cage_id"  required placeholder="Enter subject"><option selected >โปรดระบุ</option>
                     @foreach($cage as $row) @if($row->status=='ว่าง') <option  value="{{$row->cage_id}}">{{$row->cage_name}}@endif @endforeach </option></select>
               
             </div>
@@ -134,7 +239,7 @@
           <div class="col-5">
             <div class="form-group my-3 text-left">
               <Label>พนักงานผู้รับผิดชอบ</Label>
-              <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="emp_id" placeholder="Enter subject"><option selected >โปรดระบุ</option>
+              <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="emp_id"  required placeholder="Enter subject"><option selected >โปรดระบุ</option>
                   @foreach($Emp as $row) <option  value="{{$row->emp_id}}">{{$row->emp_fristname}} {{$row->emp_lastname}}@endforeach </option></select>
             
             </div>
@@ -156,7 +261,7 @@
                 <td class="text-left">{{$row->name}} {{$row->species}}</td>
                 <td class="">{{$row->quantity}}</td>
                 
-                <td><div class="form-check"><input class="form-check-input" type="radio" value="{{$row->fish_id}}" name="fish_id" id="flexRadioDefault1"> </div></td>
+                <td><div class="form-check"><input class="form-check-input" type="radio" value="{{$row->fish_id}}"  required name="fish_id" id="flexRadioDefault1"> </div></td>
               </tr>
               @endif
               @endforeach
@@ -165,10 +270,10 @@
           </div>
           <div class="row text-start ">
             <div class="col-4"><label for="">ขนาดปลา</label>
-              <input class="form-control " type="text" name="fishSize" id="flexRadioDefault1" placeholder="ระบุขนาดปลา"> </div>
+              <input class="form-control " type="text" name="fishSize" id="flexRadioDefault1"  required placeholder="ระบุขนาดปลา"> </div>
             <div class="col-4">
               <label for="">จำนวนที่ต้องการ</label>
-              <input class="form-control " type="number"  name="quantity" id="flexRadioDefault1" placeholder="ระบุจำนวนที่ต้องการ"> 
+              <input class="form-control " type="number"  name="quantity" id="flexRadioDefault1"  required placeholder="ระบุจำนวนที่ต้องการ"> 
               @error('quantity')
               <div class="alert alert-danger mt-1">{{ $message }}</div>
           @enderror
@@ -185,82 +290,12 @@
       </div>
     </div>
   </div>
-  
 
-  {{-- <div class="container">
-    <div class="add">
-      <form action="{{ route('farmingStore') }}"method="POST">
-        @csrf 
-      <div class="add-content ">
-        <div class="col-12">
-          <div class="close "> <a  class="close" id="close"><i class=" bi bi-x-square-fill"></i></a></div>
-          <H2>ข้อมูลปลาในสต็อก</H2>
-        </div>
-        
-       
-       
-        <div class="row">
-          <div class="col-3">
-            <div class="form-group my-3 text-left">
-           <Label>กระชัง</Label>
-              <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="cage_id" placeholder="Enter subject"><option selected >โปรดระบุ</option>
-                  @foreach($cage as $row) @if($row->status=='ว่าง') <option  value="{{$row->cage_id}}">{{$row->cage_name}}@endif @endforeach </option></select>
-            
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="form-group my-3 text-left">
-            <Label>พนักงานผู้รับผิดชอบ</Label>
-            <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="emp_id" placeholder="Enter subject"><option selected >ผู้รับผิดชอบ</option>
-                @foreach($Emp as $row) <option  value="{{$row->emp_id}}">{{$row->emp_fristname}} {{$row->emp_lastname}}@endforeach </option></select>
-          
-        </div>
-      </div>
-        <table class="table table-responsive-lg text-center mt-1" style="background: hsl(191, 42%, 93%)">
-          <tr class=" text-white " style="background: hsl(184, 57%, 38%)">
-          
-            <th  width="250 px">ชื่อปลา</th>
-           
-            <th width="150 px">จำนวนที่มี</th>
-            
-            <th  width="150 px">Action</th>
-          </tr>
-          @foreach($fish as $row)
-          @if($row->quantity>0)
-          <tr class=" text-black  ">
-           
-            <td class="text-left">{{$row->name}} {{$row->species}}</td>
-            <td class="">{{$row->quantity}}</td>
-            
-            <td><div class="form-check"><input class="form-check-input" type="radio" value="{{$row->fish_id}}" name="fish_id" id="flexRadioDefault1"> </div></td>
-          </tr>
-          @endif
-          @endforeach
-        </table>
-        {!! $fish->links('pagination::bootstrap-5') !!}
-        <div class="row text-start ">
-        <div class="col-4"><label for="">ขนาดปลา</label>
-          <input class="form-control " type="text" name="fishSize" id="flexRadioDefault1" placeholder="ระบุขนาดปลา"> </div>
-        <div class="col-4">
-          <label for="">จำนวนที่ต้องการ</label>
-          <input class="form-control " type="number"  name="quantity" id="flexRadioDefault1" placeholder="ระบุจำนวนที่ต้องการ"> 
-          @error('quantity')
-          <div class="alert alert-danger mt-1">{{ $message }}</div>
-      @enderror
-        </div>
-      </div>
-        <div class="row flex  ">
-          <div class="col-12  text-end  ">
-            <button type="submit" class="mt-3 btn btn-success px-3  ">ตกลง</button>
-      
-         
-          </div>
-       </div>
-        </div>
-      </div>
-    </form>
-    </div>
-  </div> --}}
+
+
+  
+  
+  
    
 
 </main>
@@ -276,15 +311,62 @@
   
 </script> --}}
 <script type="text/javascript">
-    
-  $("#addpage").click(function () {
-   document.querySelector(".add").style.display ="flex";
+    // $(document).on('click', '.editbtn', function (e) {
+    //         e.preventDefault();
+    //         var stud_id = $(this).val();
+    //         // alert(stud_id);
+    //         $('#editModal').modal('show');
+    //         // $.ajax({
+    //         //     type: "GET",
+    //         //     url: "/edit-student/" + stud_id,
+    //         //     success: function (response) {
+    //         //         if (response.status == 404) {
+    //         //             $('#success_message').addClass('alert alert-success');
+    //         //             $('#success_message').text(response.message);
+    //         //             $('#editModal').modal('hide');
+    //         //         } else {
+    //         //             // console.log(response.student.name);
+    //         //             $('#name').val(response.student.name);
+    //         //             $('#course').val(response.student.course);
+    //         //             $('#email').val(response.student.email);
+    //         //             $('#phone').val(response.student.phone);
+    //         //             $('#stud_id').val(stud_id);
+    //         //         }
+    //         //     }
+    //         // });
+    //         $('.btn-close').find('input').val('');
+
+    //     });
+
+  $(".addFishDead").click(function (e) {
+    e.preventDefault();
+            var stud_id = $(this).val();
+            console.log(stud_id);
+            // alert(stud_id);
+            $('#addFishDeadModal').modal('show');
+            $.ajax({
+                type: "GET",
+                url: "/farmingDead/" + stud_id,
+                success: function (response) {
+                        $('#farming_id').val(response.farming.farming_id);
+                    } 
+            });
   });
-  $("#pageadd").click(function () {
-   document.querySelector(".add").style.display ="flex";
+  $(".addFood").click(function (e) {
+    e.preventDefault();
+            var farming_id = $(this).val();
+            console.log(farming_id);
+            
+            $('#addFoodModal').modal('show');
+            $('#food_id').val(farming_id);
+            // $.ajax({
+            //     type: "GET",
+            //     url: "/farmingDead/" + stud_id,
+            //     success: function (response) {
+            //             $('#farming_id').val(response.farming.farming_id);
+            //         } 
+            // });
   });
-  $("#close").click(function () {
-   document.querySelector(".add").style.display ="none";
-  });
+  
 </script>
 @endsection
