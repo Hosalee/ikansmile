@@ -98,10 +98,12 @@ Route::get('/farming',[FarmingController::class,'index'])->name('farming');
 Route::post('/farmingStore',[FarmingController::class,'store'])->name('farmingStore');
 Route::get('/farmingCreate',[FarmingController::class,'create'])->name('farmingCreate');
 Route::get('/farmingDead/{id}',[FarmingController::class,'fishDead'])->name('farmingDead');
+Route::get('/farmingUpdateStatus/{id}',[FarmingController::class,'updateStatus'])->name('updateStatus');
 Route::get('/farming/farmingDelete/{id}',[FarmingController::class,'destroy'])->name('farmingDelete');
 Route::get('/farming/farmingShow/{id}',[FarmingController::class,'show'])->name('farmingShow');
 Route::post('/farming/fishDeadUpdate',[FarmingController::class,'fishDeadUpdate'])->name('fishDeadUpdate');
 Route::post('/farming/fishFoodUpdate',[FarmingController::class,'fishFoodUpdate'])->name('fishFoodUpdate');
+Route::get('/farming/showDetailFishDead/{id}',[FarmingController::class,'showDetailFishDead'])->name('showDetailFishDead');
 
 
 

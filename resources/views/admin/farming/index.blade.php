@@ -75,19 +75,31 @@
               <th width="100 px" >จำนวนปลาที่ลง</th>
               {{-- <th  width="100 px">จำนวนปลาที่เหลือ</th>
               <th  width="100 px">จำนวนปลาที่ตาย</th> --}}
-              <th  width="100 px">สถานะ</th>
+              <th  width="120 px">สถานะ</th>
               <th width="120 px">Action</th>
           </tr>
          @foreach($farming as $row)
+         @if($row->status != 3 )
               <tr class="" style="background-color: #ffffff ">
-                <td>{{$i++}}</td>
+             
+                <td>{{$farming->firstItem()+$loop->index }}</td>
                   <td>{{ $row->name }}({{ $row->species }})</td>
                   <td>{{  $row->cage_name}}</td>
                   <td  >{{$row->emp_fristname}}{{$row->emp_lastname}}</td>
                   <td  >{{$row->date_import}}</td>
                   <td  >{{$row->fishSize}}</td>
                   <td  >{{$row->fish_quantity}}</td>
-                 <td  ><a class="btn btn-primary text-white">{{$row->status}}</a></td>
+                 <td  >
+                  @if($row->status == 0 )
+                  <a class="btn btn-primary text-white">ปลาขนาดเล็ก</a>
+                  @endif
+                  @if($row->status == 1 )
+                  <a class="btn  text-white" style="background: hsl(320, 67%, 53%)">ปลาขนาดกลาง </a>
+                  @endif
+                  @if($row->status == 2 )
+                  <a class="btn  text-white px-3" style="background: hsl(152, 50%, 50%)">พร้อมจับขาย</a>
+                  @endif
+                </td>
                   <td  class="text-end">
                     <div class="">
                       <a href="{{route('farmingShow',$row->farming_id)}}" class="btn btn-primary bi bi bi-eye"></a>
@@ -99,24 +111,29 @@
                    
                     </div><div class=" mt-2">
                       {{-- <a href="route('farmingCreate',$row->farming_id)" id="edit" class="btn btn-Secondary bi bi-hourglass-split"  data-bs-toggle="modal" data-bs-target="#editModal" ></a> --}}
-                      <button type="button" value="{{$row->farming_id}}"  class="btn  addFishDead  bi bi-hourglass-split" style="background-color: #6cd7d7 ; color:#fbfeff"></button>
+                      <button type="button" value="{{$row->farming_id}}"  class="btn  addFishDead  bi bi-hourglass-split" style="background-color: #5aa8a8 ; color:#fbfeff"></button>
                       <button type="button" value="{{$row->farming_id}}"  class="btn  addFood  bi  bi-egg-fill" style="background-color: #323f3f ; color:#fbfeff"></button>
                       {{-- <a href="{{--url('/fish/editfish/'.$row->farming_id)}}" class="btn btn-Info bi-egg-fill"></a> --}}
-                      <a href="{{--url('/fish/editfish/'.$row->farming_id)--}}" class="btn btn-success  bi-hand-index-fill "></a>
-                    </div>
-                   {{-- <a href="{{url('/fish/editfish/'.$row->fish_id)}}" class="btn btn-warning bi bi-pencil-square"></a> --}}
-              
-                    {{-- <a href="{{route('Deletefish',$row->fish_id)}}" 
-                        
-                        class="btn btn-danger bi bi-trash-fill"
-                        onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
+                      @if($row->status != 2 )
+                      <a href="{{route('updateStatus',$row->farming_id)}}" class="btn    bi-hand-index-fill " style="background-color: #1c779b ; color:#fbfeff"   onclick="return confirm('คุณต้องการอัพเดตสถานะการเลี้ยงหรือไม่ ?')"></a>
+                      @endif
+                      @if($row->status == 2 )
+                       <a href="{{--route('Deletefish',$row->fish_id)--}}" 
+                        class="btn bi-dropbox" style="background-color: #5ec29a ; color:#fbfeff"
+                        onclick="return confirm('โปรดยืนยันการจับปลาในการเลี้ยงนี้ ?')">
                         </a> 
-                    --}}
+                    @endif
+                    </div>
+                   
+              
+                    
                   </td>
+                  @endif
               </tr>
           @endforeach
       </table>
-     {{-- {!! $Fish->links('pagination::bootstrap-5') !!}  --}}
+      {!! $farming->links('pagination::bootstrap-5') !!} 
+    
 
 
     </div>
@@ -147,13 +164,13 @@
                
                 <div class="form-group my-3 text-left">
                   <Label>สูตรอาหาร</Label>
-                     <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="Recipes_id"  required placeholder="Enter subject"><option selected >โปรดระบุ</option>
+                     <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="Recipes_id"  required  placeholder="Enter subject"><option selected >โปรดระบุ</option>
                          @foreach($recipes as $row) <option  value="{{$row->Recipes_id}}">{{$row->Recipes_name}} @endforeach </option></select>
                    
                  </div>
                 <div class="form-group mb-3">
                     <label for="" >จำนวน</label>
-                    <input type="number"  name="amount"   required="กรุณาระบุจำนวนปลาตาย"  class="form-control">
+                    <input type="number"  name="amount"   required  class="form-control">
                     @error('dead_number')
                 <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror

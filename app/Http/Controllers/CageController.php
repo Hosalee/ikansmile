@@ -15,7 +15,7 @@ class CageController extends Controller
     public function index()
     {
         //
-        $Cage = cage::paginate(5);
+        $Cage = cage::paginate(10);
         return view('admin.cage.index',compact('Cage'));
     }
 

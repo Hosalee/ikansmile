@@ -65,7 +65,7 @@
               </tr>
           @endforeach
       </table>
-     {{-- {!! $companies->links('pagination::bootstrap-5') !!}  --}}
+     {!!$Cage->links('pagination::bootstrap-5') !!} 
 
 
     </div>

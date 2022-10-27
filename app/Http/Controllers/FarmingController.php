@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Pagination\Paginator;
 use App\Models\cage;
 use App\Models\farming;
 use App\Models\detail_farming;
@@ -29,9 +29,13 @@ class FarmingController extends Controller
         ->join('fish','fish.fish_id','farmings.fish_id')
         ->join('cages','cages.cage_id','farmings.cage_id')
         ->select('farmings.*','employees.emp_fristname','employees.emp_lastname','fish.name','fish.species','cages.cage_name')
-        ->get();
+        ->paginate(5);
         $i=1;
-        return view('admin.farming.index',compact('fish','cage','Emp','farming','i','recipes'));
+       
+            return view('admin.farming.index',compact('fish','cage','Emp','farming','i','recipes'));
+        
+    
+       
     }
 
     /**
@@ -43,6 +47,15 @@ class FarmingController extends Controller
     {
         //
         // return view('admin.farming.editFarming');
+    }
+    public function updateStatus($id)
+    {
+        
+        $status =farming::where('farming_id',$id)->value('status');
+        $status = ($status+1);
+        farming::where('farming_id',$id)->update([ 'status'=>$status]);
+        //
+        return redirect()->route('farming')->with('success',"อัพเดตสถานะการเลี้ยงเรียบร้อย");
     }
 
     /**
@@ -71,7 +84,7 @@ class FarmingController extends Controller
         $farming->fish_quantity = $request->quantity;
         $farming->date_import = $dateimport;
         $farming->fish_amount_left = $request->quantity;
-        $farming->status = 'ระยะที1';
+        $farming->status = 0;
         $farming->save();
 
         $number=$request->quantity;
@@ -100,10 +113,43 @@ class FarmingController extends Controller
         ->join('cages','cages.cage_id','farmings.cage_id')->where('farmings.farming_id',$id)
         ->select('farmings.*','employees.emp_fristname','employees.emp_lastname','fish.name','fish.species','cages.cage_name')
         ->get();
-        return view('admin.farming.Showfarming',compact('farming'));
+
+        // $deadfish =detail_farming::where('farming_id',$id);
+        $deadfish=DB::table('detail_farmings')->where('detail_farmings.farming_id',$id )->select('detail_farmings.dead_date','detail_farmings.dead_number')->get();
+        // dd( $deadfish);
+        $foodfish=DB::table('detail_farmings')->join('recipes','recipes.Recipes_id','detail_farmings.Recipes_id')->where('detail_farmings.farming_id',$id )->select('recipes.Recipes_name','detail_farmings.food_date','detail_farmings.amount')->get();
+        // dd( $deadfish);
+        $i=1;
+        $j=1;
+        return view('admin.farming.Showfarming',compact('farming','deadfish','foodfish','i','j'));
+
+        
+
+
+
+
+
+
+        
 
 
     }
+    // public function showDetailFishDead($id)
+    // {
+    //     $farming = DB::table('farmings')->join('employees','farmings.emp_id','employees.emp_id')
+    //     ->join('fish','fish.fish_id','farmings.fish_id')
+    //     ->join('cages','cages.cage_id','farmings.cage_id')->where('farmings.farming_id',$id)
+    //     ->select('farmings.*','employees.emp_fristname','employees.emp_lastname','fish.name','fish.species','cages.cage_name')
+    //     ->get();
+
+
+    //     $deadfish = DB::table('detail_farmings')->where('detail_farmings.farming_id',$id)
+    //     ->select('detail_farmings.dead_number','detail_farmings.dead_date')
+    //     ->get();
+    //     return view('admin.farming.Showfarming',compact('farming','deadfish'));
+
+
+    // }
 
     /**
      * Show the form for editing the specified resource.
