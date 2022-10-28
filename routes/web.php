@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\CageController;
+use App\Http\Controllers\CatchFishController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\EmployeeController;
@@ -104,6 +105,10 @@ Route::get('/farming/farmingShow/{id}',[FarmingController::class,'show'])->name(
 Route::post('/farming/fishDeadUpdate',[FarmingController::class,'fishDeadUpdate'])->name('fishDeadUpdate');
 Route::post('/farming/fishFoodUpdate',[FarmingController::class,'fishFoodUpdate'])->name('fishFoodUpdate');
 Route::get('/farming/showDetailFishDead/{id}',[FarmingController::class,'showDetailFishDead'])->name('showDetailFishDead');
+
+//แอตมิน//:การจับปลา
+Route::get('/CatchFish',[CatchFishController::class,'index'])->name('CatchFish');
+Route::post('/CatchFishStore',[CatchFishController::class,'store'])->name('CatchFishStore');
 
 
 

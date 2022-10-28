@@ -152,7 +152,7 @@ background-color: #ffffff;
                       </button>
                       <div class="dropdown-container">
                         <a href="{{route('farming')}}">ข้อมูลการเลี้ยงปลา</a>
-                        <a href="#">ข้อมูลการจับปลา</a>
+                        <a href="{{route('CatchFish')}}">ข้อมูลการจับปลา</a>
                         
                       </div>
                       <button class="dropdown-btn"><i class=""></i>ข้อมูลการขาย
@@ -163,7 +163,7 @@ background-color: #ffffff;
                           <a href="#">ข้อมูลการชำระเงิน</a>
                           
                         </div>
-                        <button class="dropdown-btn"><i class=""></i>ข้อมูลสต๊อก
+                        {{-- <button class="dropdown-btn"><i class=""></i>ข้อมูลสต๊อก
                           <i class="fa-sharp fa-solid fa-caret-down"></i>
                           </button>
                           <div class="dropdown-container">
@@ -171,7 +171,7 @@ background-color: #ffffff;
                             <a href="#">ข้อมูลสต๊อกวัตถุดิบ</a>
                             <a href="#">ข้อมูลสต๊อกอาหารปลา</a>
                             
-                          </div>
+                          </div> --}}
                     <a href="#">ข้อมูลการผลิตอาหารปลา</a>
                     <button class="dropdown-btn"><i class=""></i> ข้อมูลการเงิน 
                     <i class="fa-sharp fa-solid fa-caret-down"></i>

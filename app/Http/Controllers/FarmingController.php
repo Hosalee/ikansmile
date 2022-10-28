@@ -29,7 +29,7 @@ class FarmingController extends Controller
         ->join('fish','fish.fish_id','farmings.fish_id')
         ->join('cages','cages.cage_id','farmings.cage_id')
         ->select('farmings.*','employees.emp_fristname','employees.emp_lastname','fish.name','fish.species','cages.cage_name')
-        ->paginate(5);
+        ->get();
         $i=1;
        
             return view('admin.farming.index',compact('fish','cage','Emp','farming','i','recipes'));

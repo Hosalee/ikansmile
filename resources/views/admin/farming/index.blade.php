@@ -82,7 +82,7 @@
          @if($row->status != 3 )
               <tr class="" style="background-color: #ffffff ">
              
-                <td>{{$farming->firstItem()+$loop->index }}</td>
+                <td>{{$i++}}</td>
                   <td>{{ $row->name }}({{ $row->species }})</td>
                   <td>{{  $row->cage_name}}</td>
                   <td  >{{$row->emp_fristname}}{{$row->emp_lastname}}</td>
@@ -118,10 +118,11 @@
                       <a href="{{route('updateStatus',$row->farming_id)}}" class="btn    bi-hand-index-fill " style="background-color: #1c779b ; color:#fbfeff"   onclick="return confirm('คุณต้องการอัพเดตสถานะการเลี้ยงหรือไม่ ?')"></a>
                       @endif
                       @if($row->status == 2 )
-                       <a href="{{--route('Deletefish',$row->fish_id)--}}" 
-                        class="btn bi-dropbox" style="background-color: #5ec29a ; color:#fbfeff"
-                        onclick="return confirm('โปรดยืนยันการจับปลาในการเลี้ยงนี้ ?')">
-                        </a> 
+                       <button type="button"   value="{{$row->farming_id}}"
+                        class="btn bi-dropbox addcatchFish " style="background-color: #5ec29a ; color:#fbfeff"
+                        {{-- onclick="return confirm('โปรดยืนยันการจับปลาในการเลี้ยงนี้ ?')" --}}
+                        >
+                        </button> 
                     @endif
                     </div>
                    
@@ -132,10 +133,49 @@
               </tr>
           @endforeach
       </table>
-      {!! $farming->links('pagination::bootstrap-5') !!} 
+      {{-- {!! $farming->links('pagination::bootstrap-5') !!}  --}}
     
 
 
+    </div>
+  </div>
+
+
+
+
+
+  {{--จับปลา --}}
+  <div class="modal fade" id="addcatchFishModal" tabindex="-2" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background: hsl(184, 57%, 38%)">
+                
+                <button type="button" class="btn-close  btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+  
+            <div class="modal-body  ">
+              <div class="col-12 text-center">
+                <h4>เพิ่มข้อมูลการจับปลา</h4>
+              </div>
+              <form action="{{ route('CatchFishStore') }}" method="POST" >
+                @csrf 
+               
+               
+                <div class="form-group mb-3 mt-3">
+                    <label for="" >จำนวนปลาทั้งหมด(กิโลกรัม)</label>
+                    <input type="number"  name="quantity"   required  class="form-control">
+                    @error('dead_number')
+                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="submit" name="farming_id" id="catchFish"  class="btn btn-primary " onclick="return confirm('โปรดยืนยันการจับปลาในการเลี้ยงนี้ ?')">บันทึก</button>
+            </div>
+          </form>
+        </div>
     </div>
   </div>
 
@@ -155,10 +195,6 @@
             </div>
   
             <div class="modal-body">
-  
-               
-  
-               
               <form action="{{ route('fishFoodUpdate') }}" method="POST" >
                 @csrf 
                
@@ -376,13 +412,16 @@
             
             $('#addFoodModal').modal('show');
             $('#food_id').val(farming_id);
-            // $.ajax({
-            //     type: "GET",
-            //     url: "/farmingDead/" + stud_id,
-            //     success: function (response) {
-            //             $('#farming_id').val(response.farming.farming_id);
-            //         } 
-            // });
+           
+  });
+  $(".addcatchFish").click(function (e) {
+    e.preventDefault();
+            var farming_id = $(this).val();
+            console.log(farming_id);
+            
+            $('#addcatchFishModal').modal('show');
+            $('#catchFish').val(farming_id);
+           
   });
   
 </script>
