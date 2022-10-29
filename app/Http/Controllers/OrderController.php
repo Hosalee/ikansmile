@@ -55,9 +55,12 @@ class OrderController extends Controller
         
         $request->validate([
             'supplier_id'=>'required|:Recipes',
+            'fish_id'=>'required|:Recipes',
+            
            
         ],[
             'supplier_id.required'=>"กรุณาเลือกซัพพลายเออร์",
+            'fish_id.required'=>"กรุณาเลือกรายการสั่งซื้อ",
         ]);
         $createDate =date('ymd');
         $user_id = session()->get('user_id');

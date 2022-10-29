@@ -14,6 +14,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\SaleFishController;
 use App\Http\Controllers\SupplierController;
 use App\Models\detail_farming;
 use Symfony\Component\Finder\Iterator\CustomFilterIterator;
@@ -110,7 +111,10 @@ Route::get('/farming/showDetailFishDead/{id}',[FarmingController::class,'showDet
 Route::get('/CatchFish',[CatchFishController::class,'index'])->name('CatchFish');
 Route::post('/CatchFishStore',[CatchFishController::class,'store'])->name('CatchFishStore');
 
-
+//แอตมิน//:การขาย
+Route::get('/saleFish',[SaleFishController::class,'index'])->name('saleFish');
+Route::get('/addsaleFish',[SaleFishController::class,'create'])->name('addsaleFish');
+Route::post('/storeSaleFish',[SaleFishController::class,'store'])->name('storeSaleFish');
 
 
 

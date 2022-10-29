@@ -11,11 +11,11 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>เพิ่มข้อมูลการสั่งซื้อปลา</h2>
+                <h2>เพิ่มข้อมูลการขายปลา</h2>
             </div>
            
            
-            <form action="{{ route('storeOrderfish') }}" method="POST" enctype="multipart/form-data" class=" p-5">
+            <form action="{{route('storeSaleFish')}}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">  
@@ -23,32 +23,34 @@
                         <div class="alert alert-success mt-2">
                          <p>{{ $message }}</p>
                         </div>
-                        @endif
-                    
-                    </div>
+                        @endif</div>
+                  
+                        <div class="row"></div>
                     <div class="col-md-3">
                      
                         <div class="form-group my-3">
-                            <label>ชื่อซัพพลายเออร์</label>
-                            <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="supplier_id" placeholder="Enter subject"><option >
-                                @foreach($sp as $row) <option  value="{{$row->supplier_id}}">{{$row->name}}@endforeach </option></select>
-                            @error('supplier_id')
+                            <label>ชื่อลูกค้า</label>
+                            <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="customer_id" placeholder="Enter subject"><option >
+                                @foreach($customer as $row) <option  value="{{$row->customers_id}}">{{$row->fristname}} {{$row->lastname}} </option> @endforeach</select>
+                            @error('customer_id')
                                 <div class="alert alert-danger mt-1 ">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+                    <div class="col-md 3 text-end mt-5"><h6>วันที่ : {{$date}}</h6></div>
+                </div>
                    
                     
                     
                     <hr  style="height: 100 px">
                     <div class="col-md-12 mt-3 ml-1 text-center">
                        
-                            <h4>รายการสั่งซื้อ</h4>
+                            <h4>รายการขาย</h4>
                      
                     </div>
                    
                     <div class="col-md-12 mt-3 ">
-                        @error('fish_id')
+                        @error('catchFish_id')
                         <div class="alert alert-danger mt-1 ">{{ $message }}</div>
                     @enderror
                         
@@ -56,10 +58,9 @@
                           
                               <tr class=" text-white  " style="background: hsl(184, 57%, 38%)" >
                                 <th width="30 px">#</th>
-                                <th width="100 px">ชื่อปลา</th>
-                                <th width="100 px">ขนาด(นิ้ว)</th>
-                                <th width="100 px">ราคาต่อหน่วย</th>
-                                  <th width="100 px">จำนวน</th>
+                                <th width="150 px">ชื่อปลา</th>
+                                <th width="100 px">ราคาต่อกิโลกรัม</th>
+                                  <th width="100 px">จำนวน (กิโลกรัม)</th>
                                   <th width="100 px"><button type="button" name="add" id="dynamic-ar"  style="background: hsl(207, 96%, 11%) " class="btn text-white  px-3 bi bi-plus-square"> Add</button></th>
                               </tr>
                             </thead>
@@ -73,7 +74,7 @@
                         <div class="m-lg-2">
                             <button type="submit" class="mt-3 btn btn-success">Submit</button></div>
                         <div class="">
-                            <a href="{{ route('orderfish') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
+                            <a href="{{ route('saleFish') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
                         </div>
                     </div>
 
@@ -93,7 +94,7 @@
     
     $("#dynamic-ar").click(function () {
        
-         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="fish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อปลา</option ><option > @foreach($fish as $row) <option  value="{{$row->fish_id}}">{{$row->name}}  ({{$row->species}})@endforeach</option></select></td>  <td><input type="number" name="size[]" placeholder="ระบุขนาดปลา" class="form-control mt-1" /></td> <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
+         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="catchFish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อปลา</option >@foreach($catchFish as $row) <option value="{{$row->catchFish_id}}" >  {{$row->name}} ({{$row->species}}) ({{$row->catchfish_quantity}}) @endforeach </option></select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
     });
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();

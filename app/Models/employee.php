@@ -24,6 +24,6 @@ class employee extends Model
     ];
     protected $primaryKey = 'emp_id';
     
-    // protected $table ='employees';
+     protected $table ='employees';
     
 }
