@@ -11,11 +11,11 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>เพิ่มข้อมูลการสั่งซื้อปลา</h2>
+                <h2>เพิ่มข้อมูลการสั่งวัตถุดิบ</h2>
             </div>
            
            
-            <form action="{{ route('storeOrderfish') }}" method="POST" enctype="multipart/form-data" class=" p-5">
+            <form action="" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">  
@@ -30,8 +30,9 @@
                      
                         <div class="form-group my-3">
                             <label>ชื่อซัพพลายเออร์</label>
-                            <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="supplier_id" placeholder="Enter subject"><option >
-                                @foreach($sp as $row) <option  value="{{$row->supplier_id}}">{{$row->name}}@endforeach </option></select>
+                            <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="supplier_id" placeholder="Enter subject">
+                                <option selected>โปรดระบุ</option>
+                                @foreach($sp as $row) <option  value="{{$row->supplier_id}}">{{$row->name}}</option>@endforeach </select>
                             @error('supplier_id')
                                 <div class="alert alert-danger mt-1 ">{{ $message }}</div>
                             @enderror
@@ -56,8 +57,7 @@
                           
                               <tr class=" text-white  " style="background: hsl(184, 57%, 38%)" >
                                 <th width="30 px">#</th>
-                                <th width="100 px">ชื่อปลา</th>
-                                <th width="100 px">ขนาด(นิ้ว)</th>
+                                <th width="100 px">ชื่อวัตถุดิบ</th>
                                 <th width="100 px">ราคาต่อหน่วย</th>
                                   <th width="100 px">จำนวน</th>
                                   <th width="100 px"><button type="button" name="add" id="dynamic-ar"  style="background: hsl(207, 96%, 11%) " class="btn text-white  px-3 bi bi-plus-square"> Add</button></th>
@@ -73,7 +73,7 @@
                         <div class="m-lg-2">
                             <button type="submit" class="mt-3 btn btn-success">Submit</button></div>
                         <div class="">
-                            <a href="{{ route('orderfish') }}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
+                            <a href="{{route('orderRawmaterial')}}" class="btn btn-danger ml-4 mt-3 px-4 ">Back</a>
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
     
     $("#dynamic-ar").click(function () {
        
-         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="fish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อปลา</option >@foreach($fish as $row) <option  value="{{$row->fish_id}}">{{$row->name}}  ({{$row->species}})</option> @endforeach</select></td>  <td><input type="number" name="size[]" placeholder="ระบุขนาดปลา" class="form-control mt-1" /></td> <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
+         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="fish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อวัตถุดิบ</option > @foreach($RM as $row) <option  value="{{$row->Raw_Material_id}}">{{$row->Raw_Material_name}})</option> @endforeach</select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
     });
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();

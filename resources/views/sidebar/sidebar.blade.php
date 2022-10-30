@@ -144,7 +144,7 @@ background-color: #ffffff;
                     </button>
                     <div class="dropdown-container">
                       <a href="{{route('orderfish')}}">ข้อมูลการสั่งซื้อปลา</a>
-                      <a href="#">ข้อมูลการสั่งวัตถุดิบ</a>
+                      <a href="{{route('orderRawmaterial')}}">ข้อมูลการสั่งวัตถุดิบ</a>
                       
                     </div>
                     <button class="dropdown-btn"><i class=""></i>ข้อมูลการเลี้ยง
