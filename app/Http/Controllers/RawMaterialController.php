@@ -73,6 +73,7 @@ class RawMaterialController extends Controller
        'Raw_Material_name' => $request->Raw_Material_name,    
        'details' => $request->details,
         'picture' => $full_path,
+        'quantity' => 0,
         
     ]);
     $picture->move($upload_location,$img_name);

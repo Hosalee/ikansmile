@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\orderRawmaterial;
+use App\Models\orderRMDetail;
+use App\Models\RawMaterial;
 use App\Models\order;
 use App\Models\orderfish_details;
 use App\Models\fishStock;
@@ -78,6 +81,32 @@ class FishStockController extends Controller
             
         }
         order::where('orders_id',$id )->update([ 'status'=>'ได้รับสินค้าแล้ว']);
+
+        return redirect()->back();
+
+        
+    }
+    public function store2($id)
+    {
+       //
+       $ORM =orderRMDetail::where('or_id',$id)->select('Raw_Material_id','quantity')->get();
+       $date=date('ymd'); 
+       $count =count($ORM);
+        //    dd($ORM);
+       
+        $num=0;
+        $num2=0;
+         for($i=0;$i<$count;$i++){
+            // dd($ORM[$i]->Raw_Material_id);
+            $num=RawMaterial::where('Raw_Material_id',$ORM[$i]->Raw_Material_id)->value('quantity');
+            $num2=intval($num+$ORM[$i]->quantity);
+              
+            RawMaterial::where('Raw_Material_id',$ORM[$i]->Raw_Material_id) ->update(['quantity' =>$num2]);
+            
+
+            
+        }
+        orderRawmaterial::where('or_id',$id )->update([ 'status'=>'ได้รับสินค้าแล้ว']);
 
         return redirect()->back();
 

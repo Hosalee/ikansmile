@@ -15,6 +15,7 @@
       
         <div class="pl-0">
         <a href="{{route('addsaleFish')}}" class="btn btn-primary mt-1 "><i class="bi bi-plus-square-fill pl-0"></i> เพิ่มการขายปลา</a>
+        <a href="{{route('payment')}}" class="btn btn-success mt-1 "><i class="bi bi bi-cash pl-0"></i> ไปยังการชำระเงิน</a>
         </div>
 
         @if ($message = Session::get('success'))
@@ -31,7 +32,7 @@
               <th width="100 px">ลูกค้า</th>
               <th width="100 px">ผู้รับผิดชอบ</th>
               <th width="100 px">ราคารวม</th>
-              {{-- <th width="100 px">สถานะ</th> --}}
+              <th width="100 px">สถานะ</th>
 
               <th width="150 px">Action</th>
           </tr>
@@ -42,24 +43,26 @@
                  <td  >{{$i++}}</td>
                   <td  >{{ $row->saleFish_id}}</td>
                    <td >{{ $row->date}}</td>
-                   <td >{{ $row->customer_id }}</td>
-                   <td >{{ $row->emp_id}} </td>
+                   <td >{{ $row->fristname }} {{ $row->lastname }}</td>
+                   <td >{{ $row->emp_fristname}} {{ $row->emp_lastname}}  </td>
                        <td >{{ $row->total}}</td>
-                       {{-- <td  >
-                        @if($row->status == 'กำลังจัดส่ง')
-                        <a class=" btn btn-warning px-4">{{ $row->status}}</a>
+                        <td  >
+                        @if($row->status == 0)
+                        <a class=" btn btn-warning px-4">กำลังดำเนินการ</a>
                         @endif
                       
-                        @if($row->status != 'กำลังจัดส่ง')
-                        <a class=" btn btn-success text-white">{{ $row->status}}</a>
+                        @if($row->status != 0)
+                        <a class=" btn btn-success text-white px-5">ขายสำเร็จ</a>
                         @endif
-                      </td> --}}
+                      </td> 
                       
-                  <td class="">
+                  <td class=" text-end">
                     
-                    <a href="" class="btn btn-info  bi bi-eye-fill"></a>
-                   {{-- <a href="" class="btn btn-warning bi bi-pencil-square"></a> --}}
-                     <a href="" 
+                    <a href="{{route('saleFishShow',$row->saleFish_id)}}" class="btn btn-info  bi bi-eye-fill"></a>
+                    @if($row->status == 0)
+                   <a href="" class="btn btn-warning bi bi-pencil-square"></a>
+                   @endif
+                     <a href="{{route('saleFishDelete',$row->saleFish_id)}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a>  

@@ -14,6 +14,7 @@ class RawMaterial extends Model
            'Raw_Material_name',
             'picture',
             'details',
+            'quantity',
     ];
     protected $primaryKey = 'Raw_Material_id';
 }

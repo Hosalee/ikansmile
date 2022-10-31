@@ -160,7 +160,7 @@ background-color: #ffffff;
                         </button>
                         <div class="dropdown-container">
                           <a href="{{route('saleFish')}}">ข้อมูลการขายปลา</a>
-                          <a href="#">ข้อมูลการชำระเงิน</a>
+                          <a href="{{route('payment')}}">ข้อมูลการชำระเงิน</a>
                           
                         </div>
                         {{-- <button class="dropdown-btn"><i class=""></i>ข้อมูลสต๊อก

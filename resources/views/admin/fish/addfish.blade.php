@@ -14,11 +14,11 @@
                 <h2>เพิ่มข้อมูลปลา</h2>
             </div>
            
-            @if (session('status'))
+            {{-- @if (session('status'))
                 <div class="alert alert-success">
                     {{ session('status') }}
                 </div>
-            @endif
+            @endif --}}
            
             <form action="{{ route('adminAddfish') }}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf

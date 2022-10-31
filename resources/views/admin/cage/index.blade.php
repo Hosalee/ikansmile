@@ -33,7 +33,7 @@
               <th width="50 px">ความจุ</th>
               <th width="150 px">ละติจุด , ลองจิจุด</th>
               <th width="50 px">สถานะ</th>
-              <th width="50 px">Action</th>
+              <th width="70 px">Action</th>
           </tr>
          @foreach($Cage as $row)
               <tr style="background-color: #ffffff" >

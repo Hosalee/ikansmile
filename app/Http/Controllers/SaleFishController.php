@@ -6,6 +6,7 @@ use App\Models\customer;
 use App\Models\saleDetail;
 use App\Models\saleFish;
 use App\Models\catchFish;
+use App\Models\payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,12 +20,12 @@ class SaleFishController extends Controller
     public function index()
     {
         //
-        $saleFish = saleFish::all();
-        // $catchFish = DB::table('sale_fish')
-        // ->join('customers','sale_fish.customer_id','customers.customers_id')
-        // ->join('employees','sale_fish.emp_id','employees.emp_id')
-        // ->select('sale_fish.*','employees.emp_fristname','employees.emp_lastname',)
-        // ->paginate(5);
+        // $saleFish = saleFish::all();
+        $saleFish = DB::table('sale_fish')
+        ->join('customers','sale_fish.customer_id','customers.customers_id')
+        ->join('employees','sale_fish.emp_id','employees.emp_id')
+        ->select('sale_fish.*','employees.emp_fristname','employees.emp_lastname','customers.fristname','customers.lastname')
+        ->paginate(5);
 
         $i=1;
         return view('admin.saleFish.index',compact('saleFish','i'));
@@ -78,6 +79,7 @@ class SaleFishController extends Controller
         $saleFish->customer_id= $request->customer_id;
         $saleFish->emp_id= $user_id;
         $saleFish->date = $createDate;
+        $saleFish->status = 0 ;
         $saleFish->save();
 
         $saleFish_id = DB::table('sale_fish')->orderBy('saleFish_id','DESC')->value('saleFish_id');
@@ -108,7 +110,15 @@ class SaleFishController extends Controller
              
         }
         saleFish::where('saleFish_id',$saleFish_id )->update([ 'total'=>$total]);
-        return redirect()->route('saleFish')->with('success',"บันทึกข้อมูลการสั่งซื้อลูกปลาเรียบร้อย");
+
+        $payment = new payment();
+        $payment->saleFish_id = $saleFish_id;
+        $payment->payment_status = 0;
+        $payment->save();
+
+
+
+        return redirect()->route('saleFish')->with('success',"บันทึกข้อมูลการขายปลาเรียบร้อย");
 
 
 
@@ -131,9 +141,25 @@ class SaleFishController extends Controller
      * @param  \App\Models\saleFish  $saleFish
      * @return \Illuminate\Http\Response
      */
-    public function show(saleFish $saleFish)
+    public function show($id)
     {
         //
+        
+        $saledetails = DB::table('sale_fish')->join('sale_details','sale_fish.saleFish_id','sale_details.saleFish_id')
+        ->join('catch_fish','catch_fish.catchFish_id','sale_details.catchFish_id')
+        ->join('farmings','farmings.farming_id','catch_fish.farming_id')
+        ->join('fish','fish.fish_id','farmings.fish_id')
+        ->where('sale_details.saleFish_id',$id )
+        ->select('sale_fish.*','sale_details.*','fish.name','fish.species')
+        ->paginate(5);
+        // dd($saledetails);
+        $i=1;
+        return view('admin.saleFish.showSaleFish',compact('saledetails','i'));
+
+
+
+
+
     }
 
     /**
@@ -165,8 +191,11 @@ class SaleFishController extends Controller
      * @param  \App\Models\saleFish  $saleFish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(saleFish $saleFish)
+    public function destroy($id)
     {
         //
+        $delete =saleFish::find($id)->delete();
+        return redirect()->route('saleFish')->with('success',"ลบข้อมูลการขายปลาเรียบร้อย");
+
     }
 }

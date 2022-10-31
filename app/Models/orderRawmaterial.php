@@ -16,9 +16,10 @@ class orderRawmaterial extends Model
        'emp_id',
         'date',
         'total',
+        'status'
         
     ];
-    protected $primaryKey = 'emp_id';
+    protected $primaryKey = 'or_id';
 
 
 

@@ -29,6 +29,7 @@
               <th width="160 px">รูปวัตถุดิบ</th>
               <th width="70 px">ชื่อวัตถุดิบ</th>
               <th width="150 px">รายละเอียด</th>
+              <th width="150 px">จำนวนที่มีในสต๊อก</th>
               <th width="150 px">Action</th>
           </tr>
           @foreach($RM as $row)
@@ -39,6 +40,7 @@
                   <td class="text-wrap text-left" style="width: 18rem;" > 
                     {{ Str::limit( $row->details,350)}}
                  </td>
+                 <td style="width: 1rem;">{{ $row->quantity }}</td>
                   <td>
                    <a href="{{url('/rawMaterial/editRawMaterial/'.$row->Raw_Material_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
                     <a href="{{route('deleteRawMaterial',$row->Raw_Material_id)}}" 

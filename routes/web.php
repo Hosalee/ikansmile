@@ -12,6 +12,7 @@ use App\Http\Controllers\fishController;
 use App\Http\Controllers\FishStockController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderRawmaterialController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\SalaryController;
@@ -96,6 +97,9 @@ Route::get('/showOrderfish/{id}',[OrderController::class,'show'])->name('showOrd
 //แอตมิน//:การสั่งซื้อวัตถุดิบ
  Route::get('/orderRawmaterial',[OrderRawmaterialController::class,'index'])->name('orderRawmaterial');
  Route::get('/addOrderRawmaterial',[OrderRawmaterialController::class,'create'])->name('addOrderRawmaterial');
+ Route::post('/storeOrderRawmaterial',[OrderRawmaterialController::class,'store'])->name('storeOrderRawmaterial');
+ Route::get('/ShowOrderRawmaterial/{id}',[OrderRawmaterialController::class,'show'])->name('ShowOrderRawmaterial');
+ Route::get('/addRawmaterialStock/{id}',[FishStockController::class,'store2'])->name('addRawmaterialStock');
 
 
 //แอตมิน//:สต๊อกลูกปลา
@@ -122,6 +126,14 @@ Route::post('/CatchFishStore',[CatchFishController::class,'store'])->name('Catch
 Route::get('/saleFish',[SaleFishController::class,'index'])->name('saleFish');
 Route::get('/addsaleFish',[SaleFishController::class,'create'])->name('addsaleFish');
 Route::post('/storeSaleFish',[SaleFishController::class,'store'])->name('storeSaleFish');
+Route::get('/saleFishDelete/{id}',[SaleFishController::class,'destroy'])->name('saleFishDelete');
+Route::get('/saleFishShow/{id}',[SaleFishController::class,'show'])->name('saleFishShow');
+
+//แอตมิน//:การชำระเงิน
+Route::get('/payment',[PaymentController::class,'index'])->name('payment');
+Route::get('/paymentUpdate/{id}',[PaymentController::class,'update'])->name('paymentUpdate');
+Route::get('/paymentDelete/{id}',[PaymentController::class,'destroy'])->name('paymentDelete');
+
 
 
 

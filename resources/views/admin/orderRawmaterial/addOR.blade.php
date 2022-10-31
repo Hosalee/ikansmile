@@ -15,7 +15,7 @@
             </div>
            
            
-            <form action="" method="POST" enctype="multipart/form-data" class=" p-5">
+            <form action="{{route('storeOrderRawmaterial')}}" method="POST" enctype="multipart/form-data" class=" p-5">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">  
@@ -49,7 +49,7 @@
                     </div>
                    
                     <div class="col-md-12 mt-3 ">
-                        @error('fish_id')
+                        @error('Raw_Material_id')
                         <div class="alert alert-danger mt-1 ">{{ $message }}</div>
                     @enderror
                         
@@ -93,7 +93,7 @@
     
     $("#dynamic-ar").click(function () {
        
-         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="fish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อวัตถุดิบ</option > @foreach($RM as $row) <option  value="{{$row->Raw_Material_id}}">{{$row->Raw_Material_name}})</option> @endforeach</select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
+         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="Raw_Material_id[]" placeholder="Enter subject"><option selected >ระบุชื่อวัตถุดิบ</option > @foreach($RM as $row) <option  value="{{$row->Raw_Material_id}}">{{$row->Raw_Material_name}})</option> @endforeach</select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
     });
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();

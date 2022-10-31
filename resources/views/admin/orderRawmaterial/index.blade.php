@@ -36,11 +36,11 @@
               <th width="150 px">Action</th>
           </tr>
           
-           {{-- @foreach($orderfish as $row)
+           @foreach($orderRM as $row)
           
           <tr style="background-color: #ffffff">
                  <td  >{{$i++}}</td>
-                  <td  >{{ $row->orders_id}}</td>
+                  <td  >{{ $row->or_id}}</td>
                   <td >{{ $row->date }}</td>
                    <td >{{ $row->name}}</td>
                    <td >{{ $row->emp_fristname }} {{ $row->emp_lastname }}</td>
@@ -57,18 +57,20 @@
                       
                   <td class="text-right">
                     @if($row->status=='กำลังจัดส่ง')
-                    <a href="{{route('addFishStock',$row->orders_id)}}" class="btn btn-success  bi bi-box-seam"   onclick="return confirm('คุณต้องการยืนยันคำสั่งซื้อและเพิ่มสินค้าไปยังสต๊อก ?')"></a>
+                    <a href="{{route('addRawmaterialStock',$row->or_id)}}" class="btn btn-success  bi bi-box-seam"   onclick="return confirm('คุณต้องการยืนยันคำสั่งซื้อและเพิ่มสินค้าไปยังสต๊อก ?')"></a>
                     @endif
-                    <a href="{{route('showOrderfish',$row->orders_id)}}" class="btn btn-info  bi bi-eye-fill"></a>
-                   <a href="{{--route('editRecipes',$row->Recipes_id)}}" class="btn btn-warning bi bi-pencil-square"></a>
-                    {{-- <a href="{{route('deleteRawMaterial',$row->Raw_Material_id)}}" 
+                    <a href="{{route('ShowOrderRawmaterial',$row->or_id)}}" class="btn btn-info  bi bi-eye-fill"></a>
+                    @if($row->status=='กำลังจัดส่ง')
+                   <a href="{{--route('editRecipes')--}}" class="btn btn-warning bi bi-pencil-square"></a>
+                   @endif
+                   <a href="{{route('deleteRawMaterial',$row->or_id)}}" 
                         class="btn btn-danger bi bi-trash-fill"
                         onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่ ?')">
                         </a>  
                   </td>
               </tr>
               
-         {{-- @endforeach   --}}
+         @endforeach  
       </table>
      {{-- {!! $RM->links('pagination::bootstrap-5') !!}  --}}
 
