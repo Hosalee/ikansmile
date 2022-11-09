@@ -52,6 +52,7 @@
                                   <th width="100 px">ขนาด</th>
                                   <th width="100 px">ราคาต่อหน่วย</th>
                                   <th width="100 px">จำนวน</th>
+                                  <th width="100 px">ราคารวม</th>
                                
                                   
                               </tr>
@@ -65,6 +66,7 @@
                                <td>{{$row->size }}</td>
                                <td>{{$row->price }}</td>
                                <td>{{$row->quantity }}</td>
+                               <td>{{($row->price*$row->quantity) }}</td>
                                   {{-- <td> --}}
                                     
                                   {{-- <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="IVR_PID[]" placeholder="Enter subject">

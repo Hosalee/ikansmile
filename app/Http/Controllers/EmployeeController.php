@@ -23,8 +23,9 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        $Emp = employee::where('status','employee')->paginate(5);
-        return view('admin.employee.index',compact('Emp'));
+        $Emp = employee::paginate(5);
+     $i=1;
+        return view('admin.employee.index',compact('Emp','i'));
     }
 
     /**

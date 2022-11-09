@@ -28,6 +28,7 @@
               <th width="30 px">#</th>
               <th width="160 px">ชื่อสูตร</th>
               <th width="70 px">รายละเอียด</th>
+              <th width="70 px">จำนวนที่มีในสต๊อก</th>
               <th width="150 px">Action</th>
           </tr>
           
@@ -37,6 +38,7 @@
                  <td  style="width: 2rem;">{{$i++}}</td>
                   <td  style="width: 8rem;">{{ $row->Recipes_name }}</td>
                   <td style="width: 8rem;">{{ $row->explain }}</td>
+                  <td style="width: 8rem;">{{ $row->quantity }}</td>
                   
                   <td>
                     <a href="{{route('showRecipes',$row->Recipes_id)}}" class="btn btn-info  bi bi-eye"></a>

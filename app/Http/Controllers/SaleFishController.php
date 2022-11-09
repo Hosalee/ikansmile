@@ -23,7 +23,7 @@ class SaleFishController extends Controller
         // $saleFish = saleFish::all();
         $saleFish = DB::table('sale_fish')
         ->join('customers','sale_fish.customer_id','customers.customers_id')
-        ->join('employees','sale_fish.emp_id','employees.emp_id')
+        ->join('employees','sale_fish.emp_id','employees.emp_id')->orderBy('sale_fish.saleFish_id','DESC')
         ->select('sale_fish.*','employees.emp_fristname','employees.emp_lastname','customers.fristname','customers.lastname')
         ->paginate(5);
 
@@ -45,7 +45,7 @@ class SaleFishController extends Controller
 
         $catchFish = DB::table('catch_fish')->join('farmings','farmings.farming_id','catch_fish.farming_id')
         ->join('fish','fish.fish_id','farmings.fish_id')
-        ->join('cages','cages.cage_id','farmings.cage_id')->orderBy('catchfish_date','DESC')
+        ->join('cages','cages.cage_id','farmings.cage_id')->orderBy('catch_fish.catchFish_id','ASC')
         ->select('catch_fish.*','fish.name','fish.species','cages.cage_name')
         ->paginate(5);
         $date =date('d M Y');

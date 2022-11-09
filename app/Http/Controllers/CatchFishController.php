@@ -31,7 +31,8 @@ class CatchFishController extends Controller
         // ->paginate(5);
 
         // dd($catchFish);
-        return view('admin.catchFish.index',compact('catchFish'));
+        $i=1;
+        return view('admin.catchFish.index',compact('catchFish','i'));
 
     }
 

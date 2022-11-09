@@ -13,6 +13,7 @@ use App\Http\Controllers\FishStockController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderRawmaterialController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProductionController;
 use App\Http\Controllers\RawMaterialController;
 use App\Http\Controllers\RecipesController;
 use App\Http\Controllers\SalaryController;
@@ -133,6 +134,13 @@ Route::get('/saleFishShow/{id}',[SaleFishController::class,'show'])->name('saleF
 Route::get('/payment',[PaymentController::class,'index'])->name('payment');
 Route::get('/paymentUpdate/{id}',[PaymentController::class,'update'])->name('paymentUpdate');
 Route::get('/paymentDelete/{id}',[PaymentController::class,'destroy'])->name('paymentDelete');
+//แอตมิน//การผลิต
+Route::get('/production',[ProductionController::class,'index'])->name('production');
+Route::post('/storeProduction',[ProductionController::class,'store'])->name('storeProduction');
+Route::get('/productionStatus/{id}',[ProductionController::class,'updateStatus'])->name('P_UpdateStatus');
+Route::get('/productionDelete/{id}',[ProductionController::class,'destroy'])->name('P_Delete');
+Route::post('/stockProduction',[ProductionController::class,'stock'])->name('stockProduction');
+
 
 
 

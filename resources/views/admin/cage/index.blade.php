@@ -65,6 +65,14 @@
               </tr>
           @endforeach
       </table>
+      <div class="row">
+        <div class="col-4">
+          <strong>จำนวนกระชังที่ว่าง </strong><label for="">{{$n}}</label>
+        </div>
+        <div class="col-4">
+          <strong>จำนวนกระชังที่มีการเลี้ยง </strong><label for="">{{$q}}</label>
+        </div>
+      </div>
      {!!$Cage->links('pagination::bootstrap-5') !!} 
 
 

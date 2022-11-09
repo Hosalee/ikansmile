@@ -172,7 +172,7 @@ background-color: #ffffff;
                             <a href="#">ข้อมูลสต๊อกอาหารปลา</a>
                             
                           </div> --}}
-                    <a href="#">ข้อมูลการผลิตอาหารปลา</a>
+                    <a href="{{route('production')}}">ข้อมูลการผลิตอาหารปลา</a>
                     <button class="dropdown-btn"><i class=""></i> ข้อมูลการเงิน 
                     <i class="fa-sharp fa-solid fa-caret-down"></i>
                     </button>

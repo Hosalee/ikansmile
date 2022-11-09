@@ -68,7 +68,7 @@
                         <div class="form-group my-3">
                             <label>ตำแหน่ง</label>
                             <select class="form-select"  name="position" id="autoSizingSelect" >
-                              <option selected></option>
+                              <option selected>โปรดระบุตำแหน่งงาน</option>
                               <option value="พนักงานเลี้ยงปลา">พนักงานเลี้ยงปลา</option>
                               <option value="พนักงานขายปลา">พนักงานขายปลา</option>
                               <option value="พนักงานผลิตอาหาร">พนักงานผลิตอาหาร</option>

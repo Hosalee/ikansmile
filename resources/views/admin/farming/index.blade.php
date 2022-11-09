@@ -283,9 +283,9 @@
            
             <div class="col-5">
               <div class="form-group my-3 text-left">
-             <Label>กระชัง</Label>
+             <Label>ข้อมูลกระชังที่ว่าง</Label>
                 <select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="cage_id"  required placeholder="Enter subject"><option selected >โปรดระบุ</option>
-                    @foreach($cage as $row) @if($row->status=='ว่าง') <option  value="{{$row->cage_id}}">{{$row->cage_name}}@endif @endforeach </option></select>
+                    @foreach($cage as $row) @if($row->status=='ว่าง') <option  value="{{$row->cage_id}}">{{$row->cage_name}} {{$s=$row->capicity}}@endif @endforeach </option></select>
               
             </div>
           </div>
@@ -327,6 +327,13 @@
             <div class="col-4">
               <label for="">จำนวนที่ต้องการ</label>
               <input class="form-control " type="number"  name="quantity" id="flexRadioDefault1"  required placeholder="ระบุจำนวนที่ต้องการ"> 
+              @error('quantity')
+              <div class="alert alert-danger mt-1">{{ $message }}</div>
+          @enderror
+            </div>
+            <div class="col-4">
+              <label for="">ความจุของกระชัง</label>
+              <input class="form-control " type="number" value="{{$s}}"  name="quantity" id="flexRadioDefault1"  required placeholder="ระบุจำนวนที่ต้องการ"> 
               @error('quantity')
               <div class="alert alert-danger mt-1">{{ $message }}</div>
           @enderror

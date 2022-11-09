@@ -62,6 +62,9 @@
             <div class="col-4 mt-2 text-left ">
               <strong>สถานะการเลี้ยง   :  </strong><label>{{ $farming[0]->status}} </label>
               </div>
+              <div class="col-4 mt-2 text-left ">
+                <strong>กระชัง  :  </strong><label>{{ $farming[0]->cage_name}} </label>
+                </div>
               <div class=" col-12 mb-3"></div>
             </div>
             

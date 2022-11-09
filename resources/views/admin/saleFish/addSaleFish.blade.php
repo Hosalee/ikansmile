@@ -94,7 +94,7 @@
     
     $("#dynamic-ar").click(function () {
        
-         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="catchFish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อปลา</option >@foreach($catchFish as $row) <option value="{{$row->catchFish_id}}" >  {{$row->name}} ({{$row->species}}) ({{$row->catchfish_quantity}}) @endforeach </option></select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
+         $("#dynamicAddRemove").append(  '<tr><td></td><td><select class="custom-select my-1 mr-sm-2" aria-label="Default select example" name="catchFish_id[]" placeholder="Enter subject"><option selected >ระบุชื่อปลา</option >@foreach($catchFish as $row) @if($row->catchfish_quantity > 0) <option value="{{$row->catchFish_id}}" >  {{$row->name}} ({{$row->species}}) ({{$row->catchfish_quantity}}) </option>@endif @endforeach </select></td>  <td><input type="number" name="price[]" placeholder="ระบุราคาต่อหน่วย" class="form-control mt-1" /></td>   <td><input type="number" name="quantity[]" placeholder="ระบุจำนวน" class="form-control mt-1" /></td> <td><button type="button" class="btn btn-danger remove-input-field">Delete</button></td></tr>');
     });
     $(document).on('click', '.remove-input-field', function () {
         $(this).parents('tr').remove();

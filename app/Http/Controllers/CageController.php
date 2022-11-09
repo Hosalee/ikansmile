@@ -16,7 +16,14 @@ class CageController extends Controller
     {
         //
         $Cage = cage::paginate(10);
-        return view('admin.cage.index',compact('Cage'));
+        $c =  cage::where('status','ว่าง')->get();
+        $b =  cage::where('status','มีการเลี้ยง')->get();
+        $n = count($c);
+        $q = count($b);
+        // dd($q);
+        
+        
+                return view('admin.cage.index',compact('Cage','n','q'));
     }
 
     /**

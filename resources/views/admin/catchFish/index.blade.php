@@ -70,9 +70,9 @@
               <th width="100 px">Action</th>
           </tr>
           @foreach($catchFish as $row) 
-         
+         @if($row->catchfish_quantity > 0)
               <tr class="" style="background-color: #ffffff ">
-                <td>{{$catchFish->firstItem()+$loop->index }}</td>
+                <td>{{$i++}}</td>
                 <td>{{$row->catchFish_id}}</td>
                 <td>{{$row->name}} ({{$row->species}})</td>
                 <td>{{$row->cage_name}} </td>
@@ -86,6 +86,7 @@
                   </td>
                
               </tr>
+              @endif
            @endforeach 
       </table>
       

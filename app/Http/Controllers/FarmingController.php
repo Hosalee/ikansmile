@@ -223,12 +223,16 @@ class FarmingController extends Controller
     public function fishFoodUpdate(Request $request)
     {
         //
+        $total=0;
         $amount= $request->amount;
         $recipes_id = $request->Recipes_id;
         $farming_id = $request->farming_id;
         $date =date('Ymd');
-        
-
+        // dd($recipes_id);
+        $quantity =Recipes::where('Recipes_id',$recipes_id)->value('quantity');
+        $total =($quantity-$amount);
+        // dd($total);
+        Recipes::where('Recipes_id',$recipes_id)->update(['quantity' =>$total]);
         // $sum1 = farming::where('farming_id',$farming_id)->value('amount');
         $sum = DB::table('farmings')->where('farming_id',$farming_id)->value('total_feeding_amount');
         if($sum == null){
